@@ -13,6 +13,8 @@ the **Isogeometric Analysis** approach.
 
 `IV- Compatible Finite Elements <https://github.com/ratnania/IGA-Python/blob/master/Chapter4/README.rst>`_
 
+`V- Navier-Stokes <https://github.com/ratnania/IGA-Python/blob/master/Chapter5/README.rst>`_
+
 Contributing
 ************
 
