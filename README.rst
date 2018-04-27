@@ -1,7 +1,9 @@
 IGA-Python
 ==========
 
-the **Isogeometric Analysis** approach.
+This project provides a sequence of Jupyter notebooks introducing and using the **Isogeometric Analysis (IGA)** approach.
+
+**Contents**
 
 `Introduction <https://github.com/ratnania/IGA-Python/blob/master/lessons/Chapter0/README.rst>`_
 
