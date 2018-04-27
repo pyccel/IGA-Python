@@ -17,6 +17,8 @@ This project provides a sequence of Jupyter notebooks introducing and using the 
 
 `V- Navier-Stokes <https://github.com/ratnania/IGA-Python/blob/master/lessons/Chapter5/README.rst>`_
 
+`VI- Stabilized Finite Elements <https://github.com/ratnania/IGA-Python/blob/master/lessons/Chapter6/README.rst>`_
+
 Contributing
 ************
 
