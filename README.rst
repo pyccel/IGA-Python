@@ -19,6 +19,8 @@ This project provides a sequence of Jupyter notebooks introducing and using the 
 
 `VI- Stabilized Finite Elements <https://github.com/ratnania/IGA-Python/blob/master/lessons/Chapter6/README.rst>`_
 
+`VII- Spectral Analysis using GLT <https://github.com/ratnania/IGA-Python/blob/master/lessons/Chapter7/README.rst>`_
+
 Contributing
 ************
 
