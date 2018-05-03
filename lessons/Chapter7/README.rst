@@ -11,3 +11,7 @@ VII- Spectral Analysis using GLT
 
 5. `2-D Anisotropic Diffusion - non-coercive case <http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/master/lessons/Chapter7/05_anisotropic_diffusion_noncoercive_2d.ipynb>`_
 
+6. `Curl-Dic operators <http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/master/lessons/Chapter7/06_curl_div.ipynb>`_
+
+7. `Alfwen operator <http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/master/lessons/Chapter7/07_alfven_operator_3d.ipynb>`_
+
