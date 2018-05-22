@@ -15,3 +15,8 @@ VII- Spectral Analysis using GLT
 
 7. `Alfwen operator <http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/master/lessons/Chapter7/07_alfven_operator_3d.ipynb>`_
 
+8. `Higher order derivatives <http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/master/lessons/Chapter7/08_higher_order_derivatives.ipynb>`_
+                                                                                          
+9. `Elliptic pde <http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/master/lessons/Chapter7/09_elliptic_pde.ipynb>`_
+
+10. `2-D Stokes equation <http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/master/lessons/Chapter7/10_stokes_equation.ipynb>`_
