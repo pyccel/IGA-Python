@@ -13,7 +13,7 @@ VII- Spectral Analysis using GLT
 
 6. `Curl-Div operators <http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/master/lessons/Chapter7/06_curl_div.ipynb>`_
 
-7. `Alfwen operator <http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/master/lessons/Chapter7/07_alfven_operator_3d.ipynb>`_
+7. `Alfven operator <http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/master/lessons/Chapter7/07_alfven_operator_3d.ipynb>`_
 
 8. `Higher order derivatives <http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/master/lessons/Chapter7/08_higher_order_derivatives.ipynb>`_
                                                                                           
