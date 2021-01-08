@@ -1,9 +1,9 @@
-# Compatible Finite Elements
+# Boundary conditions in IGA
 
-1. Maxwell Time Domain (1D)
+1. Homogeneous Dirichlet
 
-2. Stokes problem (2D)
+2. Non-homogeneous Dirichlet
 
-3. Maxwell Time Domain (2D)
+3. Neumann
 
-4. Maxwell Harmonic Domain (2D)
+4. Nitsche method

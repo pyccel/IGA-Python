@@ -16,21 +16,21 @@ This project provides a sequence of Jupyter notebooks introducing and using the 
 
 ### Part II - Isogeometric Analysis
 
-[Chapter 0 - Introduction](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter0/README.md)
+[Chapter 1 - Introduction](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter1/README.md)
+          
+[Chapter 2 - Linear problems](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter2/README.md)
+          
+[Chapter 3 - Non linear problems](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter3/README.md)
+          
+[Chapter 4 - Boundary conditions in IGA](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter4/README.md)
+          
+[Chapter 5 - Compatible Finite Elements](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter5/README.md)
+          
+[Chapter 6 - Navier-Stokes](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter6/README.md)
+          
+[Chapter 7 - Stabilized Finite Elements](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter7/README.md)
 
-[Chapter 1 - Linear problems](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter1/README.md)
-
-[Chapter 2 - Non linear problems](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter2/README.md)
-
-[Chapter 3 - Boundary conditions in IGA](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter3/README.md)
-
-[Chapter 4 - Compatible Finite Elements](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter4/README.md)
-
-[Chapter 5 - Navier-Stokes](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter5/README.md)
-
-[Chapter 6 - Stabilized Finite Elements](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter6/README.md)
-
-[Chapter 7 - Spectral Analysis using GLT](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter7/README.md)
+[Chapter 8 - Spectral Analysis using GLT](https://github.com/ratnania/IGA-Python/blob/main/lessons/Chapter8/README.md)
 
 ## How to use this material
 
