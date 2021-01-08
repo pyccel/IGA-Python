@@ -9,3 +9,5 @@
 [4. Poisson solver (2D)](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/04_poisson_2d.ipynb)
 
 [5. Performance and Acceleration](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/05_performance_acceleration.ipynb)
+
+[6. Boundary conditions](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/06_boundary_conditions.ipynb)

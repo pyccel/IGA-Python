@@ -39,13 +39,13 @@ This project provides a sequence of Jupyter notebooks introducing and using the 
 First you need to create a virtual environement:
 
 ```shell
-python3 -m venv iga-python
+python3 -m venv .iga-python
 ```
 
 you activate this environement using
 
 ```shell
-source iga-python/bin/activate
+source .iga-python/bin/activate
 ```
 
 Then install dependencies using
@@ -57,7 +57,7 @@ pip3 install -r requirements.txt
 Adding the virtual environement to Jupyter notebook, can be done using
 
 ```shell
-python3 -m ipykernel install --user --name=iga-python
+python3 -m ipykernel install --user --name=.iga-python
 ```
 
 ### without virtual environement
