@@ -2,8 +2,10 @@
 
 [1. Finite Elements](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/01_introduction_fem.ipynb)
 
-[2. Poisson solver](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/02_poisson.ipynb)
+[2. Poisson solver (1D)](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/02_poisson_1d.ipynb)
 
-[3. Poisson solver - continued](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/03_poisson_continued.ipynb)
+[3. Data Structure](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/03_data_structure.ipynb)
 
-[4. Biharmonic equation]
+[4. Poisson solver (2D)](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/04_poisson_2d.ipynb)
+
+[5. Performance and Acceleration](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/05_performance_acceleration.ipynb)
