@@ -73,3 +73,50 @@ def plot_field_1d(knots, degree, u, nx=101, color='b'):
         Q[i,:] = point_on_bspline_curve(knots, P, x)
 
     plt.plot(xs, Q[:,0], '-'+color)
+
+# ==========================================================
+def point_on_bspline_surface(Tu, Tv, P, u, v):
+    pu = len(Tu) - P.shape[0] - 1
+    pv = len(Tv) - P.shape[1] - 1
+    d = P.shape[-1]
+
+    span_u = find_span( Tu, pu, u )
+    span_v = find_span( Tv, pv, v )
+
+    bu   = all_bsplines( Tu, pu, u, span_u )
+    bv   = all_bsplines( Tv, pv, v, span_v )
+
+    c = np.zeros(d)
+    for ku in range(0, pu+1):
+        for kv in range(0, pv+1):
+            c[:] += bu[ku]*bv[kv]*P[span_u-pu+ku, span_v-pv+kv,:]
+
+    return c
+
+# ==========================================================
+def plot_field_2d(knots, degrees, u, nx=101, ny=101):
+    T1,T2 = knots
+    p1,p2 = degrees
+
+    n1 = len(T1) - p1 - 1
+    n2 = len(T2) - p2 - 1
+
+    xmin = T1[p1]
+    xmax = T1[-p1-1]
+
+    ymin = T2[p2]
+    ymax = T2[-p2-1]
+
+    xs = np.linspace(xmin, xmax, nx)
+    ys = np.linspace(ymin, ymax, ny)
+
+    n1,n2 = u.shape
+
+    P = np.zeros((n1, n2, 1))
+    P[:,:,0] = u[:,:]
+    Q = np.zeros((nx, ny, 1))
+    for i1,x in enumerate(xs):
+        for i2,y in enumerate(ys):
+            Q[i1,i2,:] = point_on_bspline_surface(T1, T2, P, x, y)
+    X,Y = np.meshgrid(xs,ys)
+    plt.contourf(X, Y, Q[:,:,0])
