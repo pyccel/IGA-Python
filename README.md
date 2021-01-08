@@ -4,9 +4,15 @@ This project provides a sequence of Jupyter notebooks introducing and using the 
 
 ## Contents
 
-### Part I - Computer Aided Design
+### Part I - Introduction to Computer Aided Design
 
-[Introduction to CAD](https://nbviewer.jupyter.org/github/UM6P/Introduction-to-CAD/blob/main/README.md)
+[1. Bézier curves](https://nbviewer.jupyter.org/github/UM6P/Introduction-to-CAD/blob/main/notebooks/Bezier_curves.ipynb)
+
+[2. B-Splines](https://nbviewer.jupyter.org/github/UM6P/Introduction-to-CAD/blob/main/notebooks/B-Splines.ipynb)
+
+[3. B-Splines curves](https://nbviewer.jupyter.org/github/UM6P/Introduction-to-CAD/blob/main/notebooks/B-Splines_curves.ipynb)
+
+[4. 4- B-Splines Fundamental geometric operations](https://nbviewer.jupyter.org/github/UM6P/Introduction-to-CAD/blob/main/notebooks/B-Splines_Fundamental_geometric_operations.ipynb)
 
 ### Part II - Isogeometric Analysis
 
