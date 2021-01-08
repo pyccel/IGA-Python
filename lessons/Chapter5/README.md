@@ -1,5 +1,4 @@
-V- Navier-Stokes
-****************
+# Navier-Stokes
 
 1. Cavity Flow with Navier-Stokes (2D)
 

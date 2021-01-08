@@ -1,3 +1,0 @@
-VI- Stabilized Finite Elements
-******************************
-

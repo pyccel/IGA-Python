@@ -1,5 +1,4 @@
-IV- Compatible Finite Elements
-******************************
+# Compatible Finite Elements
 
 1. Maxwell Time Domain (1D)
 

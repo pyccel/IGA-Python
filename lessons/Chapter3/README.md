@@ -1,5 +1,4 @@
-III- Boundary conditions in IGA
-*******************************
+# Boundary conditions in IGA
 
 1. Homogeneous Dirichlet
 
