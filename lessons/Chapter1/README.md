@@ -11,3 +11,5 @@
 [5. Performance and Acceleration](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/05_performance_acceleration.ipynb)
 
 [6. Boundary conditions](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/06_boundary_conditions.ipynb)
+
+[7. How to validate your FEM code](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/07_validation.ipynb)
