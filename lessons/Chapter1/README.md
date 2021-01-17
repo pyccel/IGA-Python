@@ -1,5 +1,19 @@
 # Introduction
 
+In this part, we will use the library [simplines](https://github.com/ratnania/simplines)
+
+## Install (17.01.2021)
+
+```shell
+> pip3 install git+https://github.com/ratnania/simplines.git
+```
+
+```shell
+> pip3 install git+https://github.com/pyccel/pyccel.git
+```
+
+## Contents
+
 [1. Finite Elements](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/01_introduction_fem.ipynb)
 
 [2. Poisson solver (1D)](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/02_poisson_1d.ipynb)
