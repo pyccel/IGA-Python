@@ -13,3 +13,5 @@
 [6. Boundary conditions](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/06_boundary_conditions.ipynb)
 
 [7. How to validate your FEM code](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/07_validation.ipynb)
+
+[8. Non-Linear Poisson](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/08_nonlinear_poisson.ipynb)
