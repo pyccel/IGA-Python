@@ -126,7 +126,6 @@ def assemble_norm_ex01(ne1: 'int', ne2: 'int',
                        points_1:    'double[:,:]', points_2:    'double[:,:]',
                        vector_u:    'double[:,:]'):
 
-    from numpy import zeros
     from numpy import sin
     from numpy import pi
     from numpy import sqrt
@@ -136,6 +135,7 @@ def assemble_norm_ex01(ne1: 'int', ne2: 'int',
     k2 = weights_2.shape[1]
     # ...
 
+    from numpy import zeros
     lcoeffs_u = zeros((p1+1,p2+1))
     lvalues_u = zeros((k1, k2))
 
