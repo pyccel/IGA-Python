@@ -309,7 +309,7 @@ $v \gets 0$\;
   $v \gets v +  B_i ~ f(x1) ~ \texttt{wvol} $ \;
 }
 \Return $v$ \;
-\caption{{\sc ComputeContribution}: Computation of the contribution of a test function (1D) $\texttt{expr} := \int_e b_i f(x) ~dx$ with $f$ a callable function}
+\caption{{\sc ComputeContribution} (1D): Computation of the contribution of a test function $\texttt{expr} := \int_e b_i f(x) ~dx$ with $f$ a callable function}
 \end{algorithm} 
 
 
@@ -318,7 +318,7 @@ $v \gets 0$\;
 \SetAlgoLined
 \KwResult{contribution between a test and trial function on a given element $e_1$}
 \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-\Input{$\texttt{b1s}, \texttt{w1s}, \texttt{x1s}, li_1$}
+\Input{$\texttt{b1s}, \texttt{w1s}, \texttt{x1s}, li_1, \values u$}
 \Output{$v$}
 \BlankLine
 \tcp{Reduction over quadrature points}
@@ -332,7 +332,7 @@ $v \gets 0$\;
   $v \gets v +  B_i u ~ \texttt{wvol} $ \;
 }
 \Return $v$ \;
-\caption{{\sc ComputeContribution}: Computation of the contribution of a test function $\texttt{expr} := \int_e b_i u ~dx$ with $u$ a discrete field}
+\caption{{\sc ComputeContribution} (1D): Computation of the contribution of a test function $\texttt{expr} := \int_e b_i u ~dx$ with $u$ a discrete field}
 \end{algorithm} 
 
 ### Computing contributions of test basis functions (2D)
@@ -342,7 +342,7 @@ $v \gets 0$\;
 \SetAlgoLined
 \KwResult{contribution between a test and trial function on a given element $(e_1,e_2)$}
 \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-\Input{$(\texttt{b1s}, \texttt{b2s}), (\texttt{w1s}, \texttt{w2s}), (\texttt{x1s}, \texttt{x2s}), (li_1, li_2), (lj_1, lj_2)$}
+\Input{$(\texttt{b1s}, \texttt{b2s}), (\texttt{w1s}, \texttt{w2s}), (\texttt{x1s}, \texttt{x2s}), (li_1, li_2)$}
 \Output{$v$}
 \BlankLine
 \tcp{Reduction over quadrature points}
@@ -351,15 +351,16 @@ $v \gets 0$\;
   \For{$g_2 \gets 0$ \textbf{to} $k_2-1$} {
     \BlankLine
     $B_i \gets \texttt{b1s}[li_1, g_1, 0] ~ \texttt{b2s}[li_2, g_2, 0]$ \;
-    $B_j \gets \texttt{b1s}[lj_1, g_1, 0] ~ \texttt{b2s}[lj_2, g_2, 0]$ \;
     \BlankLine
     $\texttt{wvol} \gets \texttt{w1s}[g_1] ~ \texttt{w2s}[g_2]$ \;
+    $\texttt{x1} \gets \texttt{x1s}[g_1]$ \;
+    $\texttt{x2} \gets \texttt{x2s}[g_2]$ \;
     \BlankLine
-    $v \gets v +  B_i ~ B_j ~ \texttt{wvol} $ \;
+    $v \gets v +  B_i ~ f(x1,x2) ~ \texttt{wvol} $ \;
   }
 }
 \Return $v$ \;
-\caption{Computation of a contribution between a test and trial functions of the mass matrix (2D)}
+\caption{{\sc ComputeContribution} (2D): Computation of the contribution of a test function $\texttt{expr} := \int_e b_i f(x,y) ~dxdy$ with $f$ a callable function}
 \end{algorithm} 
 
 
@@ -368,7 +369,7 @@ $v \gets 0$\;
 \SetAlgoLined
 \KwResult{contribution between a test and trial function on a given element $(e_1,e_2)$}
 \SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-\Input{$(\texttt{b1s}, \texttt{b2s}), (\texttt{w1s}, \texttt{w2s}), (\texttt{x1s}, \texttt{x2s}), (li_1, li_2), (lj_1, lj_2)$}
+\Input{$(\texttt{b1s}, \texttt{b2s}), (\texttt{w1s}, \texttt{w2s}), (\texttt{x1s}, \texttt{x2s}), (li_1, li_2), \values u$}
 \Output{$v$}
 \BlankLine
 \tcp{Reduction over quadrature points}
@@ -376,18 +377,16 @@ $v \gets 0$\;
 \For{$g_1 \gets 0$ \textbf{to} $k_1-1$} {
   \For{$g_2 \gets 0$ \textbf{to} $k_2-1$} {
     \BlankLine
-    $\partial_{x_1} B_i \gets \texttt{b1s}[li_1, g_1, 1] ~ \texttt{b2s}[li_2, g_2, 0]$ \;
-    $\partial_{x_2} B_i \gets \texttt{b1s}[li_1, g_1, 0] ~ \texttt{b2s}[li_2, g_2, 1]$ \;
-    $\partial_{x_1} B_j \gets \texttt{b1s}[lj_1, g_1, 1] ~ \texttt{b2s}[lj_2, g_2, 0]$ \;
-    $\partial_{x_2} B_j \gets \texttt{b1s}[lj_1, g_1, 0] ~ \texttt{b2s}[lj_2, g_2, 1]$ \;
+    $B_i \gets \texttt{b1s}[li_1, g_1, 0] ~ \texttt{b2s}[li_2, g_2, 0]$ \;
     \BlankLine
     $\texttt{wvol} \gets \texttt{w1s}[g_1] ~ \texttt{w2s}[g_2]$ \;
+    $u \gets \values u[g_1,g_2]$ \;
     \BlankLine
-    $v \gets v +  (\partial_{x_1} B_i ~ \partial_{x_1} B_j + \partial_{x_2} B_i ~ \partial_{x_2} B_j ) ~ \texttt{wvol} $ \;
+    $v \gets v +  B_i u ~ \texttt{wvol} $ \;
   }
 }
 \Return $v$ \;
-\caption{Computation of a contribution between a test and trial functions of the Stiffness matrix (2D)}
+\caption{{\sc ComputeContribution} (2D): Computation of the contribution of a test function $\texttt{expr} := \int_e b_i u ~dxdy$ with $u$ a discrete field}
 \end{algorithm} 
 
 ## Kernel for an expression with arity = 2
@@ -418,7 +417,51 @@ $v \gets 0$\;
 \caption{Assembly of the matrix (1D), on a given element}
 \end{algorithm} 
 
-### Computing contributions between test and trial basis functions
+### 2D case
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+%\KwResult{matrix over a given element}
+%\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+%\Input{TODO}
+%\Output{TODO}
+\BlankLine
+\tcp{$li_1$ denotes the (test) local index (axis=1)}
+\For{$li_1 \gets 0$ \textbf{to} $p_1$} {
+  \tcp{$i_1$ denotes the (test) global index (axis=1)}
+  $i_1 \gets li_1 + \texttt{span\_i\_1} - p_1$\;
+  \BlankLine
+  \tcp{$lj_1$ denotes the (trial) local index (axis=1)}
+  \For{$lj_1 \gets 0$ \textbf{to} $p_1$} {
+    \tcp{$j_1$ denotes the (trial) global index (axis=1)}
+    $j_1 \gets lj_1 + \texttt{span\_j\_1} - p_1$\;
+    \BlankLine
+    \tcp{$li_2$ denotes the (test) local index (axis=2)}
+    \For{$li_2 \gets 0$ \textbf{to} $p_2$} {
+      \tcp{$i_2$ denotes the (test) global index (axis=2)}
+      $i_2 \gets li_2 + \texttt{span\_i\_2} - p_2$\;
+      \BlankLine
+      \tcp{$lj_2$ denotes the (trial) local index (axis=2)}
+      \For{$lj_2 \gets 0$ \textbf{to} $p_2$} {
+        \tcp{$j_2$ denotes the (trial) global index (axis=2)}
+        $j_2 \gets lj_2 + \texttt{span\_j\_2} - p_2$\;
+        \BlankLine
+        \tcp{Compute the contribution between test and trial functions}
+        $v \gets \texttt{compute\_contribution}(li_1,li_2,lj_1,lj_2)$ \;
+        \BlankLine
+        $I \gets \texttt{multi\_index}(i_1,i_2)$ \;
+        $J \gets \texttt{multi\_index}(j_1,j_2)$ \;
+        \BlankLine
+        $\texttt{update\_matrix}(M,I,J,v)$ \;
+      }
+    }
+  }
+}
+\caption{Assembly of the matrix (2D), on a given element}
+\end{algorithm} 
+
+### Computing contributions between test and trial basis functions (1D)
 
 \begin{algorithm}[H]
 \DontPrintSemicolon
@@ -466,51 +509,7 @@ $v \gets 0$\;
 \end{algorithm} 
 
 
-### 2D case
-
-\begin{algorithm}[H]
-\DontPrintSemicolon
-\SetAlgoLined
-%\KwResult{matrix over a given element}
-%\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
-%\Input{TODO}
-%\Output{TODO}
-\BlankLine
-\tcp{$li_1$ denotes the (test) local index (axis=1)}
-\For{$li_1 \gets 0$ \textbf{to} $p_1$} {
-  \tcp{$i_1$ denotes the (test) global index (axis=1)}
-  $i_1 \gets li_1 + \texttt{span\_i\_1} - p_1$\;
-  \BlankLine
-  \tcp{$lj_1$ denotes the (trial) local index (axis=1)}
-  \For{$lj_1 \gets 0$ \textbf{to} $p_1$} {
-    \tcp{$j_1$ denotes the (trial) global index (axis=1)}
-    $j_1 \gets lj_1 + \texttt{span\_j\_1} - p_1$\;
-    \BlankLine
-    \tcp{$li_2$ denotes the (test) local index (axis=2)}
-    \For{$li_2 \gets 0$ \textbf{to} $p_2$} {
-      \tcp{$i_2$ denotes the (test) global index (axis=2)}
-      $i_2 \gets li_2 + \texttt{span\_i\_2} - p_2$\;
-      \BlankLine
-      \tcp{$lj_2$ denotes the (trial) local index (axis=2)}
-      \For{$lj_2 \gets 0$ \textbf{to} $p_2$} {
-        \tcp{$j_2$ denotes the (trial) global index (axis=2)}
-        $j_2 \gets lj_2 + \texttt{span\_j\_2} - p_2$\;
-        \BlankLine
-        \tcp{Compute the contribution between test and trial functions}
-        $v \gets \texttt{compute\_contribution}(li_1,li_2,lj_1,lj_2)$ \;
-        \BlankLine
-        $I \gets \texttt{multi\_index}(i_1,i_2)$ \;
-        $J \gets \texttt{multi\_index}(j_1,j_2)$ \;
-        \BlankLine
-        $\texttt{update\_matrix}(M,I,J,v)$ \;
-      }
-    }
-  }
-}
-\caption{Assembly of the matrix (2D), on a given element}
-\end{algorithm} 
-
-### Computing contributions between test and trial basis functions
+### Computing contributions between test and trial basis functions (2D)
 
 \begin{algorithm}[H]
 \DontPrintSemicolon
