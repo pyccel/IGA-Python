@@ -1,6 +1,6 @@
 # Non linear problems
 
-1. Non linear elliptic equation (2D)
+[1. Non linear elliptic equation (2D)](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter3/01_poisson_2d.ipynb)
 
 [2. Non-linear Convection (1D)](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter3/02_convection_1d.ipynb)
 

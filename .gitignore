@@ -104,5 +104,8 @@ ENV/
 # pyccel
 __*pyccel__*
 
+# psydac
+__psydac__*
+
 # virtual env
 .iga-python
