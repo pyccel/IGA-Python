@@ -1,6 +1,11 @@
 # Linear problems
 
-Starting from now, we will use the library [psydac](https://github.com/pyccel/psydac)
+Starting from now, we will use the libraries:
+
+* [sympde](https://github.com/pyccel/sympde)
+* [psydac](https://github.com/pyccel/psydac)
+
+[0. Introduction to **SymPDE**](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter2/00_introduction_sympde.ipynb)
 
 [1. Linear Convection (1D)](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter2/01_convection_1d.ipynb)
 
