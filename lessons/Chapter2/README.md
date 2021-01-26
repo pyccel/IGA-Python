@@ -13,6 +13,10 @@ Starting from now, we will use the libraries:
 
 [3. Convection-Diffusion equation (1D)](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter2/03_convection_diffusion_1d.ipynb)
 
-4. Linear Convection (2D)
+[4. Linear Convection (2D)](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter2/04_convection_2d.ipynb)
 
-5. Diffusion equation (2D)
+[5. Diffusion equation (2D)](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter2/05_diffusion_2d.ipynb)
+
+[6. Convection-Diffusion equation (2D)](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter2/06_convection_diffusion_2d.ipynb)
+
+[7. Biharmonic equation (2D)](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter2/07_biharmonic_2d.ipynb)
