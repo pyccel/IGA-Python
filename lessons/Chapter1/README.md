@@ -2,14 +2,11 @@
 
 In this part, we will use the library [simplines](https://github.com/ratnania/simplines)
 
-## Install (17.01.2021)
+## Install (26.02.2021)
 
 ```shell
-> pip3 install git+https://github.com/ratnania/simplines.git
-```
-
-```shell
-> pip3 install git+https://github.com/pyccel/pyccel.git
+> pip3 install simplines
+> pip3 install pyccel
 ```
 
 ## Contents
