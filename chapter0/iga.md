@@ -1,3 +1,0 @@
-# Isogeometric Analysis 
-
-TODO
