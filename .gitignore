@@ -17,4 +17,5 @@ usr
 *.log
 
 .env
+.iga-python
 
