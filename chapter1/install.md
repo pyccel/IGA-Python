@@ -15,8 +15,7 @@ Then install dependencies using
 
 ```shell
 pip3 install wheel
-# numba does work right now with numpy > 1.21
-pip3 install "numpy<=1.21"
+pip3 install numpy
 pip3 install pyccel 
 pip3 install ipykernel
 pip3 install git+https://github.com/pyccel/sympde.git
