@@ -65,7 +65,7 @@ parts:
     chapters:
       - file: chapter4/subdomains
         sections:
-          - file: chapter4/poisson-nitsche
+          - file: chapter4/poisson-two-subdomains-nitsche
   - caption: Applications 
     chapters:
       - file: chapter5/cfd
