@@ -30,6 +30,7 @@ jobs:
         pip install .
         pip install jupyter-book ghp-import sphinx_proof
         python -m ipykernel install --user --name .iga-python --display-name "IGA-Python"
+        python -m ipykernel install --user --name v_psydac --display-name "Python (v_psydac)"
 
     - name: Build Jupyter Book
       run: jupyter-book build .
