@@ -37,6 +37,7 @@ parts:
     chapters:
       - file: chapter2/poisson
       - file: chapter2/poisson-nitsche
+      - file: chapter2/elliptic-general-form
       - file: chapter2/biharmonic
       - file: chapter2/vector-poisson
       - file: chapter2/advection-diffusion
@@ -65,4 +66,35 @@ parts:
       - file: chapter4/subdomains
         sections:
           - file: chapter4/poisson-nitsche
-
+  - caption: Applications 
+    chapters:
+      - file: chapter5/cfd
+        sections:
+          - file: chapter5/buoyancy-driven_natural_convection         
+          - file: chapter5/compressible_flow_in_a_nozzle              
+          - file: chapter5/convection-diffusion_equation_in_a_channel 
+          - file: chapter5/free_surface_flow                          
+          - file: chapter5/heat_conduction_in_a_solid                 
+          - file: chapter5/incompressible_flow_past_a_cylinder        
+          - file: chapter5/magnetohydrodynamics_flow                  
+          - file: chapter5/particle-laden_flow                        
+          - file: chapter5/stokes_flow_in_a_lid-driven_cavity         
+          - file: chapter5/two-phase_flow                             
+          - file: chapter5/non-newtonian-fluids
+            sections:
+              - file: chapter5/power_law_fluid_flow_in_a_channel          
+              - file: chapter5/bingham_plastic_flow_in_a_pipe             
+              - file: chapter5/oldroyd-b_fluid_flow_in_a_channel          
+              - file: chapter5/herschel-bulkley_fluid_flow_in_a_pipe      
+              - file: chapter5/cross_power_law_fluid_flow_in_a_channel    
+              - file: chapter5/casson_fluid_flow_in_a_channel             
+              - file: chapter5/papanastasiou_fluid_flow_in_a_channel      
+      - file: chapter5/fsi
+      - file: chapter5/electromagnetics
+      - file: chapter5/mhd
+      - file: chapter5/material-science
+      - file: chapter5/multiphysics
+  - caption: Documentation
+    chapters:
+      - file: documentation/sympde
+      - file: documentation/psydac

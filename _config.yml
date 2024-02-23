@@ -38,5 +38,9 @@ html:
 sphinx:
   extra_extensions:
     - sphinx_proof
+    - sphinx.ext.autodoc
+    - sphinx.ext.autosummary
+  config:
+    autosummary_generate: True
 
 exclude_patterns: [README.md, .iga-python]
