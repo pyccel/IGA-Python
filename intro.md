@@ -1,4 +1,4 @@
-# IGA-Python 
+# Home 
 
 Welcome to IGA-Python, a tutorial for Isogeometric Analysis using Python.
 
