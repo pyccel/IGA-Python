@@ -21,6 +21,8 @@ jobs:
         python -m pip install --upgrade pip
         git clone https://github.com/pyccel/psydac.git
         cd psydac
+        pip install -r requirements.txt
+        pip install -r requirements_extra.txt --no-build-isolation
         pip install .
         pip install jupyter-book ghp-import sphinx_proof
         python -m ipykernel install --user --name .iga-python --display-name "IGA-Python"
