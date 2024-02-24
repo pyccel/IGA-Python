@@ -1,4 +1,5 @@
 # 1D Burgers equation
+*Author: Ahmed Ratnani*
 
 We consider the 1d Burgers equation
 

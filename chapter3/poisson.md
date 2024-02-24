@@ -1,4 +1,5 @@
 # Nonlinear Poisson in 2D
+*Author: Ahmed Ratnani*
 
 In this section, we consider the non-linear Poisson problem:
 

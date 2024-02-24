@@ -1,4 +1,5 @@
 # B-splines FEM solver for Poisson equation (2D)
+*Author: Ahmed Ratnani*
 
 In this section, we show hoa to use **simplines** to solve a 2D Poisson problem with homogeneous boundary conditions
 $$

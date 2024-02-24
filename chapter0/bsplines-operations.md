@@ -1,5 +1,5 @@
 # Fundamental geometric operations for B-Splines
-
+*Author: Ahmed Ratnani*
 
 Having more control on a curve, adding new control points, can be done in two different ways:
 

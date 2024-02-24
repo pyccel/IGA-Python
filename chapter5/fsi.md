@@ -1,4 +1,5 @@
 # Fluid-Structure Interaction
+*Author: Ahmed Ratnani*
 
 Fluid-Structure Interaction (FSI) involves the coupled interaction between a fluid and a structure, where the motion of one influences the behavior of the other. The Finite Element Method (FEM) is a powerful tool for simulating FSI problems. This section provides an overview of the mathematical formulation for fluid-structure interaction using finite elements.
 

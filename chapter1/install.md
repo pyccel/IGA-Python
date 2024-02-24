@@ -1,4 +1,5 @@
 # Installation
+*Author: Ahmed Ratnani*
 
 It is recommanded to use a virtual environement.
 

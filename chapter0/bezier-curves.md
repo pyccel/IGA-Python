@@ -1,4 +1,5 @@
 # Bézier curves
+*Author: Ahmed Ratnani*
 
 We recall the definition of a Bézier curve:
 

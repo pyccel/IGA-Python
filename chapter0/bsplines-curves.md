@@ -1,4 +1,5 @@
 # B-Splines curves
+*Author: Ahmed Ratnani*
 
 Let $(\mathbf{P}_i)_{ 0 \leqslant i \leqslant n}\in \mathbb{R}^d$  be a sequence of control points. Following the same approach as for Bézier curves, we define B-Splines curves as
 

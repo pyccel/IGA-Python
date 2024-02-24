@@ -1,4 +1,5 @@
 # Algebraic and differential operators evalution rules
+*Author: Ahmed Ratnani*
 
 ## Evaluation of the $\mathrm{grad}$ operator 
 

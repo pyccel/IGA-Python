@@ -1,4 +1,5 @@
 # B-Splines
+*Author: Ahmed Ratnani*
 
 Given a subdivision $\{x_0 <  x_1 < \cdots < x_r\}$ of the interval $I = [x_0, x_r]$, the \textbf{Schoenberg space} is the space of piecewise polynomials of degree $p$, on the interval $I$ and given regularities $\{k_1, k_2, \cdots, k_{r-1}\}$ at the internal points $\{x_1, x_2, \cdots, x_{r-1}\}$. 
 

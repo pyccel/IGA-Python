@@ -1,4 +1,5 @@
 # Performance and Acceleration
+*Author: Ahmed Ratnani*
 
 In this section, we shall see how to accelerate our Python code assembly and get native speed.
 We will be using [Numba](https://numba.pydata.org/) and [Pyccel](https://github.com/pyccel/pyccel).
