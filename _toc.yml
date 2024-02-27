@@ -33,6 +33,7 @@ parts:
           - file: chapter1/space
           - file: chapter1/rules
       - file: chapter1/poisson 
+      - file: chapter1/boundary-conditions
   - caption: Linear Problems 
     chapters:
       - file: chapter2/poisson
