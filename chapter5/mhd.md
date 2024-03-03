@@ -10,17 +10,17 @@ Finite element analysis provides a powerful and flexible framework for addressin
 Magnetohydrodynamics (MHD) is a branch of physics and fluid dynamics that studies the magnetic properties and behavior of electrically conducting fluids, such as plasmas, liquid metals, and saltwater. The MHD equations describe the coupled interactions between the magnetic field, fluid flow, and electric current. Here are the mathematical models for the MHD equations:
 
 1. MHD Continuity Equation:
-   $$
+   $
    \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{v}) = 0
-   $$
+   $
    where:
    - $\rho$ is the fluid density,
    - $\mathbf{v}$ is the fluid velocity.
 
 2. MHD Momentum Equation:
-   $$
+   $
    \rho \frac{D\mathbf{v}}{Dt} = -\nabla p + \rho \mathbf{g} + \nabla \cdot \boldsymbol{\tau} + \mathbf{J} \times \mathbf{B}
-   $$
+   $
    where:
    - $\frac{D\mathbf{v}}{Dt}$ is the material derivative of velocity,
    - $p$ is the pressure,
@@ -30,24 +30,24 @@ Magnetohydrodynamics (MHD) is a branch of physics and fluid dynamics that studie
    - $\mathbf{B}$ is the magnetic field.
 
 3. MHD Induction Equation:
-   $$
+   $
    \frac{\partial \mathbf{B}}{\partial t} = \nabla \times (\mathbf{v} \times \mathbf{B} - \eta \nabla \times \mathbf{B})
-   $$
+   $
    where:
    - $\eta$ is the magnetic diffusivity.
 
 4. MHD Ohm's Law:
-   $$
+   $
    \mathbf{J} = \sigma (\mathbf{E} + \mathbf{v} \times \mathbf{B})
-   $$
+   $
    where:
    - $\sigma$ is the electrical conductivity,
    - $\mathbf{E}$ is the electric field.
 
 5. MHD Energy Equation:
-   $$
+   $
    \rho C_p \frac{DT}{Dt} = -p \nabla \cdot \mathbf{v} + \nabla \cdot (k \nabla T) + \frac{1}{\sigma}(\mathbf{J} \cdot \mathbf{E})
-   $$
+   $
    where:
    - $C_p$ is the specific heat at constant pressure,
    - $T$ is the temperature,

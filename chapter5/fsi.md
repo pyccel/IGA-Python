@@ -7,11 +7,13 @@ Fluid-Structure Interaction (FSI) involves the coupled interaction between a flu
 
 The governing equations for fluid-structure interaction involve the Navier-Stokes equations for the fluid and the equations of motion for the structure. In a partitioned approach, the coupled system is given by:
 
+$$
 \begin{align}
     \text{Fluid Domain:} \quad \rho_f \left(\frac{\partial \mathbf{u}_f}{\partial t} + (\mathbf{u}_f \cdot \nabla)\mathbf{u}_f\right) &= -\nabla p_f + \mu_f \nabla^2 \mathbf{u}_f + \mathbf{f}_f + \mathbf{F}_s, \label{eq:fsi_fluid_momentum} \\
     \nabla \cdot \mathbf{u}_f &= 0, \label{eq:fsi_fluid_continuity} \\
     \text{Structure Domain:} \quad \rho_s \frac{\partial^2 \mathbf{u}_s}{\partial t^2} &= \nabla \cdot \mathbf{P}_s + \mathbf{f}_s, \label{eq:fsi_structure_motion}
 \end{align}
+$$
 
 where:
 
@@ -65,12 +67,4 @@ The coupling conditions, such as \eqref{eq:fsi_kinematic_condition} and \eqref{e
 
 ## References
 
-The following references provide comprehensive coverage of the mathematical background for fluid-structure interaction using finite elements:
-
-\begin{enumerate}
-    \item \cite{hron2006fluid}  
-    \item \cite{bathe2014finite}
-    \item \cite{quarteroni2017fluid}
-\end{enumerate}
-
-Researchers interested in detailed mathematical derivations and computational techniques are encouraged to explore the referenced works.
+The following references provide comprehensive coverage of the mathematical background for fluid-structure interaction using finite elements: {cite}`hron2006fluid`  {cite}`bathe2014finite` {cite}`quarteroni2017fluid`

@@ -46,12 +46,5 @@ To apply the finite element method, the domain $\Omega$ is discretized into elem
 
 ## References
 
-The following references provide in-depth coverage of the mathematical background for electromagnetism using finite elements:
+The following references provide in-depth coverage of the mathematical background for electromagnetism using finite elements: {cite}`jin2015finite`  {cite}`bossavit1998whitney` {cite}`monk2003finite`
 
-\begin{enumerate}
-    \item \cite{jin2015finite} 
-    \item \cite{bossavit1998whitney}
-    \item \cite{monk2003finite}
-\end{enumerate}
-
-This mathematical background serves as the foundation for implementing finite element simulations of electromagnetic problems. Researchers interested in detailed mathematical derivations and computational techniques are encouraged to explore the referenced works.

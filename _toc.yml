@@ -72,29 +72,102 @@ parts:
     chapters:
       - file: chapter5/cfd
         sections:
-          - file: chapter5/buoyancy-driven_natural_convection         
-          - file: chapter5/compressible_flow_in_a_nozzle              
-          - file: chapter5/convection-diffusion_equation_in_a_channel 
-          - file: chapter5/free_surface_flow                          
-          - file: chapter5/heat_conduction_in_a_solid                 
-          - file: chapter5/incompressible_flow_past_a_cylinder        
-          - file: chapter5/magnetohydrodynamics_flow                  
-          - file: chapter5/particle-laden_flow                        
-          - file: chapter5/stokes_flow_in_a_lid-driven_cavity         
-          - file: chapter5/two-phase_flow                             
-          - file: chapter5/non-newtonian-fluids
-            sections:
-              - file: chapter5/power_law_fluid_flow_in_a_channel          
-              - file: chapter5/bingham_plastic_flow_in_a_pipe             
-              - file: chapter5/oldroyd-b_fluid_flow_in_a_channel          
-              - file: chapter5/herschel-bulkley_fluid_flow_in_a_pipe      
-              - file: chapter5/cross_power_law_fluid_flow_in_a_channel    
-              - file: chapter5/casson_fluid_flow_in_a_channel             
-              - file: chapter5/papanastasiou_fluid_flow_in_a_channel      
+          - file: chapter5/cfd/buoyancy-driven_natural_convection         
+          - file: chapter5/cfd/compressible_flow_in_a_nozzle              
+          - file: chapter5/cfd/convection-diffusion_equation_in_a_channel 
+          - file: chapter5/cfd/free_surface_flow                          
+          - file: chapter5/cfd/heat_conduction_in_a_solid                 
+          - file: chapter5/cfd/incompressible_flow_past_a_cylinder        
+          - file: chapter5/cfd/magnetohydrodynamics_flow                  
+          - file: chapter5/cfd/particle-laden_flow                        
+          - file: chapter5/cfd/stokes_flow_in_a_lid-driven_cavity         
+          - file: chapter5/cfd/two-phase_flow                             
+          - file: chapter5/cfd/non-newtonian-fluids
+            sections:      
+              - file: chapter5/cfd/power_law_fluid_flow_in_a_channel          
+              - file: chapter5/cfd/bingham_plastic_flow_in_a_pipe             
+              - file: chapter5/cfd/oldroyd-b_fluid_flow_in_a_channel          
+              - file: chapter5/cfd/herschel-bulkley_fluid_flow_in_a_pipe      
+              - file: chapter5/cfd/cross_power_law_fluid_flow_in_a_channel    
+              - file: chapter5/cfd/casson_fluid_flow_in_a_channel             
+              - file: chapter5/cfd/papanastasiou_fluid_flow_in_a_channel      
       - file: chapter5/fsi
+        sections:
+          - file: chapter5/fsi/flutter_analysis_of_a_flexible_wing_in_fluid_flow
+          - file: chapter5/fsi/two-way_fluid-structure_interaction_in_a_tube
+          - file: chapter5/fsi/fluid-structure_interaction_in_a_flexible_channel
       - file: chapter5/electromagnetics
       - file: chapter5/mhd
+        sections:
+          - file: chapter5/mhd/mhd-stability-analysis
+            sections:
+              - file: chapter5/mhd/mhd_rayleigh-taylor_instability_in_a_conducting_fluid
+              - file: chapter5/mhd/mhd_kelvin-helmholtz_instability_in_magnetized_flows
+              - file: chapter5/mhd/mhd_stability_of_a_current-carrying_plasma_column
+          - file: chapter5/mhd/mhd-turbulence
+            sections:
+              - file: chapter5/mhd/mhd_turbulence_in_solar_winds
+              - file: chapter5/mhd/mhd_turbulence_in_laboratory_plasmas
+              - file: chapter5/mhd/mhd_turbulence_in_accretion_disks
+          - file: chapter5/mhd/mhd-heat-transfer
+            sections:
+              - file: chapter5/mhd/mhd_heat_transfer_in_a_rectangular_domain
+              - file: chapter5/mhd/mhd_heat_transfer_in_a_cylindrical_fusion_reactor
+              - file: chapter5/mhd/mhd_heat_transfer_in_a_magma_convection_model
+          - file: chapter5/mhd/mhd-dynamo
+            sections:
+              - file: chapter5/mhd/simple_kinematic_dynamo_model
+              - file: chapter5/mhd/mhd_dynamo_in_a_rotating_sphere
+              - file: chapter5/mhd/astrophysical_dynamo_in_a_stellar_interior
+          - file: chapter5/mhd/mhd-astrophysics
+            sections:
+              - file: chapter5/mhd/mhd_star_formation_in_a_protostellar_cloud
+              - file: chapter5/mhd/mhd_solar_wind_simulation
+              - file: chapter5/mhd/mhd_accretion_disk_in_binary_star_system
+          - file: chapter5/mhd/mhd-material-processing
+            sections:
+              - file: chapter5/mhd/mhd_aluminum_electromagnetic_stirring
+              - file: chapter5/mhd/mhd_continuous_casting_of_steel
+              - file: chapter5/mhd/mhd_metal_solidification_in_magnetic_field
+          - file: chapter5/mhd/mhd-drug-targeting
+            sections:
+              - file: chapter5/mhd/magnetic_targeting_in_a_blood_vessel
+              - file: chapter5/mhd/magnetic_targeting_in_tumor_tissue
+              - file: chapter5/mhd/magnetic_targeting_in_the_eye_for_retinal_diseases
+          - file: chapter5/mhd/mhd-fluid-dynamics
+            sections:
+              - file: chapter5/mhd/ferrofluid_flow_in_a_microfluidic_device
+              - file: chapter5/mhd/ferrofluid_damper_in_mechanical_system
+              - file: chapter5/mhd/magnetic_fluid_actuator_in_valve_control
+          - file: chapter5/mhd/mhd-fusion
       - file: chapter5/material-science
+        sections:
+          - file: chapter5/material-science/creep_in_viscoelastic_materials
+          - file: chapter5/material-science/diffusion_and_reaction_in_porous_media
+          - file: chapter5/material-science/elasticity_with_thermal_expansion
+          - file: chapter5/material-science/heat_conduction_with_phase_change
+          - file: chapter5/material-science/piezoelectric_material
+          - file: chapter5/material-science/composite-materials
+            sections:      
+              - file: chapter5/material-science/homogenization_of_composite_structures
+              - file: chapter5/material-science/thermal_conductivity_of_composite_materials
+              - file: chapter5/material-science/fiber-reinforced_composite_materials
+              - file: chapter5/material-science/composite_materials_with_piezoelectric_fibers
+              - file: chapter5/material-science/composite_materials_with_thermal_expansion
+          - file: chapter5/material-science/composite-materials-analysis
+            sections:      
+              - file: chapter5/material-science/laminate_plate_bending
+              - file: chapter5/material-science/composite_beam_analysis
+              - file: chapter5/material-science/composite_pressure_vessel_analysis
+              - file: chapter5/material-science/composite_shaft_analysis
+              - file: chapter5/material-science/composite_shell_structures
+          - file: chapter5/material-science/additive-manifacturing
+            sections:      
+              - file: chapter5/material-science/thermal_simulation_in_powder_bed_fusion
+              - file: chapter5/material-science/fluid_flow_simulation_in_directed_energy_deposition
+              - file: chapter5/material-science/structural_simulation_in_fused_filament_fabrication
+              - file: chapter5/material-science/multi-material_simulation_in_material_jetting
+              - file: chapter5/material-science/residual_stress_simulation_in_selective_laser_melting
       - file: chapter5/multiphysics
   - caption: Documentation
     chapters:
