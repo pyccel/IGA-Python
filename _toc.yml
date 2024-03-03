@@ -34,6 +34,10 @@ parts:
           - file: chapter1/rules
       - file: chapter1/poisson 
       - file: chapter1/boundary-conditions
+      - file: chapter1/geometry
+        sections:
+          - file: chapter1/analytical-mapping
+          - file: chapter1/discrete-mapping
   - caption: Linear Problems 
     chapters:
       - file: chapter2/poisson
