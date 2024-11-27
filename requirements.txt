@@ -5,4 +5,5 @@ sphinx-proof
 matplotlib
 pyccel 
 ipykernel
+notebook
 psydac[extra] @ git+https://github.com/pyccel/psydac.git@devel#egg=psydac
