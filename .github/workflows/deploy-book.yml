@@ -17,11 +17,9 @@ jobs:
       with:
         python-version: '3.12'
         cache: 'pip'
-        cache-dependency-path: |
-          requirements.txt
+        cache-dependency-path: requirements.txt
 
-    - name: Install non-Python dependencies on Ubuntu
-      if: matrix.os == 'ubuntu-latest'
+    - name: Install GCC and OpenMPI
       uses: awalsh128/cache-apt-pkgs-action@latest
       with:
         packages: gfortran openmpi-bin libopenmpi-dev libhdf5-openmpi-dev
@@ -32,8 +30,7 @@ jobs:
     # Workaround is to 'reinstall' openmpi-bin, which doesn't actually perform
     # installation (since openmpi-bin already exists), but instead reruns
     # `update-alternatives` which fixes the symlinks to mpicc/mpif90.
-    - name: Set default MPI and HDF5 C compilers on Ubuntu
-      if: matrix.os == 'ubuntu-latest'
+    - name: Set default MPI and HDF5 C compilers
       run: |
         sudo apt-get update
         sudo apt-get install --reinstall openmpi-bin libhdf5-openmpi-dev
