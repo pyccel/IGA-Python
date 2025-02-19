@@ -10,7 +10,7 @@ jobs:
   deploy-book:
     runs-on: ${{ matrix.os }}
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         include:
           - os: ubuntu-24.04
@@ -58,15 +58,14 @@ jobs:
       run: |
         brew install open-mpi hdf5-mpi libomp
 
-    - name: Set default gfortran
+    - name: Check Fortran version
       run: |
-        alias gfortran="$FC"
-        gfortran --version
+        $FC --version
 
     - name: Install Jupyter Book and Psydac
       run: |
         pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -vvv -r requirements.txt
 
     - name: Build Jupyter Book
       run: jupyter-book build .
