@@ -62,10 +62,18 @@ jobs:
       run: |
         $FC --version
 
+    - name: Test pyccel on macOS
+      if: startsWith(matrix.os, 'macos')
+      run: |
+        pip install pyccel
+        wget https://raw.githubusercontent.com/pyccel/psydac/refs/heads/devel/psydac/core/bsplines_kernels.py
+        pyccel --verbose bsplines_kernels.py --language fortran --openmp
+
     - name: Install Jupyter Book and Psydac
+      if: startsWith(matrix.os, 'ubuntu')
       run: |
         pip install --upgrade pip
-        pip install -vvv -r requirements.txt
+        pip install -r requirements.txt
 
     - name: Build Jupyter Book
       run: jupyter-book build .
