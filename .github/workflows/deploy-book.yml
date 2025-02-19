@@ -16,7 +16,7 @@ jobs:
           - os: ubuntu-24.04
             python-version: '3.12'
 
-          - os: macos-14
+          - os: macos-15
             python-version: '3.12'
 
     env:
@@ -27,6 +27,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+        cache-dependency-path: requirements.txt
 
     - name: Install non-Python dependencies on Ubuntu
       if: startsWith(matrix.os, 'ubuntu')
