@@ -8,11 +8,23 @@ on:
 
 jobs:
   deploy-book:
-    runs-on: ubuntu-24.04
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            python-version: '3.12'
+
+          - os: macos-15
+            python-version: '3.12'
+
+    name: ${{ matrix.os }} / Python ${{ matrix.python-version }} 
+
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install GCC and OpenMPI
+    - name: Install non-Python dependencies on Ubuntu
+      if: startsWith(matrix.os, 'ubuntu')
       uses: awalsh128/cache-apt-pkgs-action@latest
       with:
         packages: gfortran openmpi-bin libopenmpi-dev libhdf5-openmpi-dev
@@ -23,10 +35,16 @@ jobs:
     # Workaround is to 'reinstall' openmpi-bin, which doesn't actually perform
     # installation (since openmpi-bin already exists), but instead reruns
     # `update-alternatives` which fixes the symlinks to mpicc/mpif90.
-    - name: Set default MPI and HDF5 C compilers
+    - name: Reconfigure non-Python dependencies on Ubuntu
+      if: startsWith(matrix.os, 'ubuntu')
       run: |
         sudo apt-get update
         sudo apt-get install --reinstall openmpi-bin libhdf5-openmpi-dev
+
+    - name: Install non-Python dependencies on macOS
+      if: startsWith(matrix.os, 'macos')
+      run: |
+        brew install open-mpi hdf5-mpi libomp
 
     - name: Install Jupyter Book and Psydac
       run: |
