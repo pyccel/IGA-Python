@@ -8,3 +8,4 @@ ipykernel
 notebook
 nb-clean
 psydac[extra] @ git+https://github.com/pyccel/psydac.git@devel#egg=psydac
+
