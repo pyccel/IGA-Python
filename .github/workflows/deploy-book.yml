@@ -21,7 +21,6 @@ jobs:
 
     env:
       FC: gfortran-14
-      MAKEFLAGS: -j4
 
     name: ${{ matrix.os }} / Python ${{ matrix.python-version }}
 
@@ -70,13 +69,6 @@ jobs:
         fi
         gfortran --version
 
-    - name: Test pyccel on macOS
-      if: startsWith(matrix.os, 'macos')
-      run: |
-        pip install pyccel
-        wget https://raw.githubusercontent.com/pyccel/psydac/refs/heads/devel/psydac/core/bsplines_kernels.py
-        pyccel --verbose bsplines_kernels.py --language fortran --openmp
-
     - name: Install Jupyter Book and Psydac
       run: |
         pip install --upgrade pip
@@ -86,7 +78,7 @@ jobs:
       run: jupyter-book build .
 
     - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/master'
+      if: ${{ (github.ref == 'refs/heads/master') && startsWith(matrix.os, 'ubuntu') }}
       run: ghp-import -n -p -f _build/html
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
