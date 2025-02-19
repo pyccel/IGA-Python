@@ -1,5 +1,5 @@
 # the steady-state Navier-Stokes equations for incompressible fluids
-*Author: Ahmed Ratnani*
+
 
 The steady-state Navier Stokes problem for an incompressible fluid, with homogeneous Dirichlet boundary conditions (``no slip'' condition), is defined as
 

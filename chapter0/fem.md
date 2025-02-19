@@ -1,5 +1,5 @@
 # Introduction to B-Splines FEM
-*Author: Ahmed Ratnani*
+
 
 Let $\Omega \subset \mathbb{R}^d$ be a computational domain that is the image of a logical domain $\mathcal{P}$, *i.e.* a unit line (in *1d*), square (in *2d*) or a cube (in *3d*) with a **mapping** function 
 

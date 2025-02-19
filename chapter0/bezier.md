@@ -1,5 +1,5 @@
 # Bernstein polynomials
-*Author: Ahmed Ratnani*
+
 
 Without loss of generality, we restrict to the case of the unit interval, namely $a=0$ and $b=1$.
 In figure (Fig. \ref{fig:bernstein-polynomials}), we plot the first sixth Bernstein polynomials.

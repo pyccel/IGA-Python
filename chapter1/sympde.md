@@ -1,5 +1,5 @@
 # SymPDE concepts and their mathematical meaning
-*Author: Ahmed Ratnani*
+
 
 ## Domain
 

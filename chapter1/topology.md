@@ -1,5 +1,5 @@
 # Topology concepts
-*Author: Ahmed Ratnani*
+
 
 ## Domain
 

@@ -1,5 +1,5 @@
 # MHD
-*Author: Ahmed Ratnani*
+
 
 In magnetohydrodynamics (MHD), finite element analysis can be applied to solve a variety of problems related to the behavior of electrically conducting fluids (plasmas or liquid metals) in the presence of magnetic fields. Here are some common problems in magnetohydrodynamics that can be addressed using finite element methods.
 

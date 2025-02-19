@@ -1,5 +1,5 @@
 # Electromagnetics
-*Author: Ahmed Ratnani*
+
 
 Electromagnetic problems are commonly described by Maxwell's equations, which govern the behavior of electric and magnetic fields. The Finite Element Method (FEM) provides a powerful numerical approach for solving these equations in complex geometries. This section provides a concise overview of the mathematical formulation for electromagnetic problems using finite elements.
 

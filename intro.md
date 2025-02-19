@@ -1,5 +1,5 @@
 # Home 
-*Author: Ahmed Ratnani*
+
 
 Welcome to IGA-Python, a tutorial for Isogeometric Analysis using Python.
 

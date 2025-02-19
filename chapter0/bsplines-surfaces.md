@@ -1,5 +1,5 @@
 # B-Splines surfaces
-*Author: Ahmed Ratnani*
+
 
 The B-spline surface in $\mathbb{R}^d$ associated to knots $(T_u, T_v)$ where $T_u=(u_i)_{0\leqslant i \leqslant n_u + p_u + 1}$ and $T_v=(v_i)_{0\leqslant i \leqslant n_v + p_v + 1}$, and control points $(\mathbf{P}_{ij})_{ 0 \leqslant i \leqslant n_u,  0 \leqslant j \leqslant n_v}$ is defined by :
 
