@@ -60,7 +60,7 @@ jobs:
 
     - name: Check gfortran version
       run: |
-        if [[ "${{ matrix.include.os }}" == *"macos"* ]]; then 
+        if [[ "${{ matrix.os }}" == *"macos"* ]]; then 
           # pyccel searches for a Fortran compiler exactly named 'gfortran'
           # which the macos runner doesn't have. A simple workaround is to 
           # create a symlink named 'gfortran'.
