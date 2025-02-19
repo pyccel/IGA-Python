@@ -58,20 +58,26 @@ jobs:
       run: |
         brew install open-mpi hdf5-mpi libomp
 
-    - name: Check Fortran version
+    - name: Check gfortran version
       run: |
-        $FC --version
+        if [[ "${{ matrix.include.os }}" == *"macos"* ]]; then 
+          # pyccel searches for a Fortran compiler exactly named 'gfortran'
+          # which the macos runner doesn't have. A simple workaround is to 
+          # create a symlink named 'gfortran'.
+          FC_path=$(which $FC)
+          FC_dir=$(dirname ${FC_path})
+          ln -sv ${FC_path} ${FC_dir}/gfortran
+        fi
+        gfortran --version
 
     - name: Test pyccel on macOS
       if: startsWith(matrix.os, 'macos')
       run: |
         pip install pyccel
         wget https://raw.githubusercontent.com/pyccel/psydac/refs/heads/devel/psydac/core/bsplines_kernels.py
-        alias gfortran=$FC
         pyccel --verbose bsplines_kernels.py --language fortran --openmp
 
     - name: Install Jupyter Book and Psydac
-      if: startsWith(matrix.os, 'ubuntu')
       run: |
         pip install --upgrade pip
         pip install -r requirements.txt
