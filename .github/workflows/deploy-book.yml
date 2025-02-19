@@ -67,6 +67,7 @@ jobs:
       run: |
         pip install pyccel
         wget https://raw.githubusercontent.com/pyccel/psydac/refs/heads/devel/psydac/core/bsplines_kernels.py
+        alias gfortran=$FC
         pyccel --verbose bsplines_kernels.py --language fortran --openmp
 
     - name: Install Jupyter Book and Psydac
