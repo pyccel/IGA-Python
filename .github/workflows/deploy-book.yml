@@ -21,6 +21,7 @@ jobs:
 
     env:
       FC: gfortran-14
+      MAKEFLAGS: -j4
 
     name: ${{ matrix.os }} / Python ${{ matrix.python-version }}
 
