@@ -10,15 +10,18 @@ jobs:
   deploy-book:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: ubuntu-24.04
             python-version: '3.12'
+            fortran-compiler: gfortran-14
 
           - os: macos-15
             python-version: '3.12'
+            fortran-compiler: gfortran-14
 
-    name: ${{ matrix.os }} / Python ${{ matrix.python-version }} 
+    name: ${{ matrix.os }} / Python ${{ matrix.python-version }}
 
     steps:
     - uses: actions/checkout@v4
@@ -45,6 +48,11 @@ jobs:
       if: startsWith(matrix.os, 'macos')
       run: |
         brew install open-mpi hdf5-mpi libomp
+
+    - name: Set default Fortran compiler to ${{ fortran-compiler }}
+      run: |
+        export FC=${{ fortran-compiler }}
+        $FC --version
 
     - name: Install Jupyter Book and Psydac
       run: |
