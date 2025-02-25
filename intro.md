@@ -1,5 +1,7 @@
 # Home 
 
+```{include} AUTHORS
+```
 
 Welcome to IGA-Python, a tutorial for Isogeometric Analysis using Python.
 
