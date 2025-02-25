@@ -75,7 +75,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Build Jupyter Book
-      run: jupyter-book build .
+      run: make docs
 
     - name: Deploy to GitHub Pages
       if: ${{ (github.ref == 'refs/heads/master') && startsWith(matrix.os, 'ubuntu') }}
