@@ -1,0 +1,10 @@
+wheel
+numpy
+jupyter-book
+sphinx-proof
+matplotlib
+ipykernel
+notebook
+nb-clean
+myst_parser
+
