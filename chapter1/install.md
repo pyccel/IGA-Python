@@ -12,10 +12,21 @@ cd IGA-Python
 # Install required Python packages
 python3 -m venv iga-python-env
 source iga-python-env/bin/activate
-pip3 install -r requirements.txt
+pip3 install -r requirements_ntbk.txt
 ```
 
-2. Access [IGA-Python] examples through Jupyter notebook.
+2. Install Psydac. Skip this step if Psydac is already installed on your system.
+
+```bash
+# Modify these variables if you're using your own psydac fork/branch
+PSYDAC_REMOTE="https://github.com/pyccel/psydac.git"
+BRANCH="devel"
+
+# Install psydac
+pip install git+${PSYDAC_REMOTE}@${BRANCH}
+```
+
+3. Access [IGA-Python] examples through Jupyter notebook.
 
 ```shell
 # Run this command under IGA-Python folder 
