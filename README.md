@@ -1,8 +1,6 @@
 # Welcome to IGA-Python
 
-This project provides a tutorial for isogeometric analysis (IGA) using Python and
-the Psydac library (pyccel/psydac). The numerical examples can be consulted online
-at pyccel.github.io/IGA-Python, or run with Jupyter Notebook on a personal computer.
+This project provides a tutorial for isogeometric analysis (IGA) using Python and the Psydac library (pyccel/psydac). The numerical examples can be consulted online at pyccel.github.io/IGA-Python, or run with JupyterNotebook on a personal computer.
 
 ## Editing and building IGA-Python locally
 
@@ -50,15 +48,12 @@ open ${IGA_PYTHON_DIR}/_build/html/index.html
 
 ## Committing your changes to git
 
-Running the Python notebooks automatically embeds extra information to the notebooks
-like the name of your virtual environment, Python version used, cell outputs, etc.
-These system- and runtime-specific information should be removed before committing
-changes to git. You can follow the suggested commit workflow below:
+Running the Python notebooks embeds extra information like the name of virtual environment, Python version used, cell outputs, etc. The notebooks should be free of system- and runtime-specific information before committing them to source control. We suggest the following commit workflow:
 
-1. Run [`nb-clean`](https://github.com/srstevenson/nb-clean) on the modified notebook/s. There are multiple ways to do this:
+1. Run [`nb-clean`](https://github.com/srstevenson/nb-clean) on the modified notebook/s. There are different ways to run this command:
 
 ```bash
-# Clean a single file
+# Clean a single notebook
 nb-clean clean --remove-empty-cells --remove-all-notebook-metadata chapter1/poisson.ipynb
 
 # Clean all '.ipynb' files under IGA-Python
