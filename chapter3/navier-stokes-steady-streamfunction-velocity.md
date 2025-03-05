@@ -1,5 +1,5 @@
 # The streamfunction-velocity formulation of the steady-state Navier-Stokes equations for incompressible fluids
-*Author: Ahmed Ratnani*
+
 
 When $\Omega$ is a simply connected 2D domain, there exists a unique function $\psi$ such that $\mathbf{u} = \boldsymbol{\nabla} \times \psi:= \left( \partial_y \psi, - \partial_x \psi \right)$;
 substituting this expression for $\mathbf{u}$ into \eqref{eq:steady-navier-stokes} leads to the so-called ``streamfunction-velocity formulation'' of the steady-state Navier-Stokes equations for an incompressible fluid.

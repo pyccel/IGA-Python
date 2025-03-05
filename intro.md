@@ -1,5 +1,6 @@
 # Home 
-*Author: Ahmed Ratnani*
+
+*Author: Ahmed Ratnani* [^authors]
 
 Welcome to IGA-Python, a tutorial for Isogeometric Analysis using Python.
 
@@ -13,3 +14,6 @@ Welcome to IGA-Python, a tutorial for Isogeometric Analysis using Python.
 
 ```{tableofcontents}
 ```
+
+[^authors]: Complete list of authors can be found here: https://github.com/pyccel/IGA-Python/blob/master/AUTHORS
+

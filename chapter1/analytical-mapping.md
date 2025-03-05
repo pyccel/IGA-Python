@@ -1,5 +1,5 @@
 # Analytical Mapping 
-*Author: Ahmed Ratnani*
+
 
 Analytical Mappings are provided as symbolic expressions, which allow us to compute automatically their jacobian matrices and all related geometrical information.
 

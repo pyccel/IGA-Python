@@ -1,5 +1,5 @@
 # Geometry
-*Author: Ahmed Ratnani*
+
 
 The IGA concept relies on the fact that the geometry (domain) is divided into subdomains, and each of these subdomains is the image of a **Line**, **Square** or a **Cube** by a geometric transformation (also called a **mapping**), that we shall call a **patch** or **logical domain**.
 

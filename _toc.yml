@@ -32,7 +32,7 @@ parts:
           - file: chapter1/topology
           - file: chapter1/space
           - file: chapter1/rules
-      - file: chapter1/poisson 
+      - file: chapter1/poisson
       - file: chapter1/boundary-conditions
       - file: chapter1/geometry
         sections:

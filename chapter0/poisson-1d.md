@@ -1,5 +1,5 @@
 # B-splines FEM solver for Poisson equation (1D)
-*Author: Ahmed Ratnani*
+
 
 Following the previous [section](http://nbviewer.jupyter.org/github/ratnania/IGA-Python/blob/main/lessons/Chapter1/01_introduction_fem.ipynb), we implement here a B-Splines FEM for the Poisson problem in 1D, with homogeneous boundary conditions.
 

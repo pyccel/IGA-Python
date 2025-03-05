@@ -1,5 +1,5 @@
 # Data Structure
-*Author: Ahmed Ratnani*
+
 
 In the sequel, we shall use **StencilMatrix** and **StencilVector** from the **psydac** library.
 

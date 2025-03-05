@@ -1,5 +1,5 @@
 # Subdomains
-*Author: Ahmed Ratnani*
+
 
 In this section, we consider a domain $\Omega$ which a union of multiple subdomain, *i.e.*
 

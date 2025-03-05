@@ -1,41 +1,85 @@
-name: Build and Deploy Jupyter Book
+name: Build IGA-Python Jupyter Book
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   deploy-book:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            python-version: '3.12'
+
+          - os: macos-15
+            python-version: '3.12'
+
+    env:
+      FC: gfortran-14
+
+    name: ${{ matrix.os }} / Python ${{ matrix.python-version }}
+
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.9'
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+        cache-dependency-path: requirements.txt
 
-    - name: Install dependencies
+    - name: Install non-Python dependencies on Ubuntu
+      if: startsWith(matrix.os, 'ubuntu')
+      uses: awalsh128/cache-apt-pkgs-action@latest
+      with:
+        packages: gfortran openmpi-bin libopenmpi-dev libhdf5-openmpi-dev
+        version: 1.0
+        execute_install_scripts: true
+
+    # When loading cached apt packages, the default MPI compiler isn't set.
+    # Workaround is to 'reinstall' openmpi-bin, which doesn't actually perform
+    # installation (since openmpi-bin already exists), but instead reruns
+    # `update-alternatives` which fixes the symlinks to mpicc/mpif90.
+    - name: Reconfigure non-Python dependencies on Ubuntu
+      if: startsWith(matrix.os, 'ubuntu')
       run: |
-        python -m pip install --upgrade pip
         sudo apt-get update
-        sudo apt-get install gfortran
-        sudo apt-get install openmpi-bin libopenmpi-dev
-        sudo apt-get install libhdf5-openmpi-dev
-        git clone https://github.com/pyccel/psydac.git
-        cd psydac
-        python -m pip install -r requirements.txt
-        python -m pip install -r requirements_extra.txt --no-build-isolation
-        pip install .
-        pip install jupyter-book ghp-import sphinx_proof
-        python -m ipykernel install --user --name .iga-python --display-name "IGA-Python"
-        python -m ipykernel install --user --name v_psydac --display-name "Python (v_psydac)"
+        sudo apt-get install --reinstall openmpi-bin libhdf5-openmpi-dev
+
+    - name: Install non-Python dependencies on macOS
+      if: startsWith(matrix.os, 'macos')
+      run: |
+        brew install open-mpi hdf5-mpi libomp
+
+    - name: Check gfortran version
+      run: |
+        if [[ "${{ matrix.os }}" == *"macos"* ]]; then 
+          # pyccel searches for a Fortran compiler exactly named 'gfortran'
+          # which the macos runner doesn't have. A simple workaround is to 
+          # create a symlink named 'gfortran'.
+          FC_path=$(which $FC)
+          FC_dir=$(dirname ${FC_path})
+          ln -sv ${FC_path} ${FC_dir}/gfortran
+        fi
+        gfortran --version
+
+    - name: Install Jupyter Book and Psydac
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements.txt
 
     - name: Build Jupyter Book
-      run: jupyter-book build .
+      run: make docs
 
     - name: Deploy to GitHub Pages
+      if: ${{ (github.ref == 'refs/heads/master') && startsWith(matrix.os, 'ubuntu') }}
       run: ghp-import -n -p -f _build/html
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

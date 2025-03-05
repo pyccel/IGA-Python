@@ -1,5 +1,5 @@
 # Boundary Conditions
-*Author: Ahmed Ratnani*
+
 
 SymPDE & Psydac allows you to use both strong and weak boundary conditions.
 We start first by explaining how to identify a boundary in **NCube** domains, such as **Line**, **Square** and a **Cube**.

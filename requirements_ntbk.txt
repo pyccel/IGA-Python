@@ -3,9 +3,8 @@ numpy
 jupyter-book
 sphinx-proof
 matplotlib
-pyccel 
 ipykernel
 notebook
 nb-clean
-psydac @ git+https://github.com/pyccel/psydac.git@devel#egg=psydac
+myst_parser
 
