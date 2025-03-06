@@ -1,4 +1,4 @@
-name: IGA-Python Jupyter Book
+name: Jupyter book
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
             python-version: '3.12'
           - os: macos-15
             python-version: '3.12'
-    name: build_${{ matrix.os }}_python${{ matrix.python-version }}
+    name: build / ${{ matrix.os }} / python${{ matrix.python-version }}
     env:
       FC: gfortran-14
 
