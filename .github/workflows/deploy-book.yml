@@ -79,7 +79,7 @@ jobs:
       uses: actions/upload-pages-artifact@v3
       with:
         path: _build/html
-        name: github-pages_${{ matrix.os }}$_python${{ matrix.python-version }}$
+        name: github-pages_${{ matrix.os }}_python${{ matrix.python-version }}
       
   deploy:
     if: github.event_name != 'pull_request'
@@ -93,4 +93,4 @@ jobs:
       id: deployment
       uses: actions/deploy-pages@v4
       with:
-        artifact_name: github-pages_ubuntu-24.04_python3.12$
+        artifact_name: github-pages_ubuntu-24.04_python3.12
