@@ -17,7 +17,7 @@ jobs:
             python-version: '3.12'
           - os: macos-15
             python-version: '3.12'
-    name: build [${{ matrix.os }} / Python ${{ matrix.python-version }}]
+    name: build_${{ matrix.os }}_python${{ matrix.python-version }}
     env:
       FC: gfortran-14
 
@@ -75,12 +75,12 @@ jobs:
       run: make docs
 
     - name: Upload artifact
-      if: matrix.os == 'ubuntu-24.04'
       id: deployment
       uses: actions/upload-pages-artifact@v3
       with:
-        path: '_build/html'
-
+        path: _build/html
+        name: github-pages_${{ matrix.os }}$_python${{ matrix.python-version }}$
+      
   deploy:
     if: github.event_name != 'pull_request'
     needs: build
@@ -92,3 +92,5 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v4
+      with:
+        artifact_name: github-pages_ubuntu-24.04_python3.12$
