@@ -1,4 +1,4 @@
-name: Build IGA-Python Jupyter Book
+name: IGA-Python Jupyter Book
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build_book:
+  build:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: true
@@ -15,14 +15,11 @@ jobs:
         include:
           - os: ubuntu-24.04
             python-version: '3.12'
-
           - os: macos-15
             python-version: '3.12'
-
+    name: build [${{ matrix.os }} / Python ${{ matrix.python-version }}]
     env:
       FC: gfortran-14
-
-    name: ${{ matrix.os }} / Python ${{ matrix.python-version }}
 
     steps:
     - uses: actions/checkout@v4
@@ -88,7 +85,7 @@ jobs:
       with:
         path: '_build/html'
 
-  deploy_book:
+  deploy:
     if: github.event_name != 'pull_request'
     needs: build_book
     runs-on: ubuntu-24.04
