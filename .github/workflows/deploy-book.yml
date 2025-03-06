@@ -79,7 +79,9 @@ jobs:
 
     - name: Deploy to GitHub Pages
       if: ${{ (github.ref == 'refs/heads/master') && startsWith(matrix.os, 'ubuntu') }}
-      run: ghp-import -n -p -f _build/html
+      run: |
+        pip install ghp-import
+        ghp-import -n -p -f _build/html
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
