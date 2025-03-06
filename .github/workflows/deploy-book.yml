@@ -83,7 +83,7 @@ jobs:
 
   deploy:
     if: github.event_name != 'pull_request'
-    needs: build_book
+    needs: build
     runs-on: ubuntu-24.04
     environment:
       name: github-pages
