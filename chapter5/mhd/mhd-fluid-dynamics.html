@@ -1,0 +1,1107 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Magnetic Fluid Dynamics in Engineering &#8212; IGA-Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter5/mhd/mhd-fluid-dynamics';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Ferrofluid Flow in a Microfluidic Device" href="ferrofluid_flow_in_a_microfluidic_device.html" />
+    <link rel="prev" title="Magnetic Targeting in the Eye for Retinal Diseases" href="magnetic_targeting_in_the_eye_for_retinal_diseases.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="IGA-Python - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="IGA-Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Home
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../chapter0/howto.html">What to expect from IGA-Python</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter0/cad.html">Computer Aided Design</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter0/bezier.html">Bernstein polynomials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter0/bezier-curves.html">Bézier curves</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter0/bsplines.html">B-Splines</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter0/bsplines-curves.html">B-Splines curves</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter0/bsplines-surfaces.html">B-Splines surfaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter0/bsplines-operations.html">Fundamental geometric operations for B-Splines</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter0/iga.html">Isogeometric Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter0/fem.html">Introduction to B-Splines FEM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter0/poisson-1d.html">B-splines FEM solver for Poisson equation (1D)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter0/data-structure.html">Data Structure</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../chapter0/poisson-2d.html">B-splines FEM solver for Poisson equation (2D)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter0/performance-acceleration.html">Performance and Acceleration</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../chapter1/install.html">Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter1/sympde.html">SymPDE concepts and their mathematical meaning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter1/topology.html">Topology concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter1/space.html">Function Space concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter1/rules.html">Algebraic and differential operators evalution rules</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chapter1/poisson.html">Your first code using SymPDE &amp; PsyDAC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chapter1/boundary-conditions.html">Boundary Conditions</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter1/geometry.html">Geometry</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter1/analytical-mapping.html">Analytical Mapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter1/discrete-mapping.html">Discrete Mapping</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../chapter2/poisson.html">The Poisson equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chapter2/poisson-nitsche.html">The Poisson equation with weak imposition of Dirichlet conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chapter2/elliptic-general-form.html">Elliptic equation in the general form</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chapter2/biharmonic.html">The Biharmonic problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chapter2/vector-poisson.html">Vector Poisson equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter2/advection-diffusion.html">Advection-diffusion equation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter2/advection-diffusion-stabilized.html">Stabilized advection-diffusion equation</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter2/poisson-mixed.html">Mixed FEM for the Poisson problem</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter2/poisson-mixed-v1.html">First mixed formulation of the Poisson problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter2/poisson-mixed-v2.html">Second mixed formulation of the Poisson problem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter2/stokes.html">Mixed FEM for the Stokes problem</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter2/stokes-v1.html">First mixed formulation of the Stokes problem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter2/stokes-v2.html">Second mixed formulation of the Stokes problem</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chapter2/elliptic-curl.html">Elliptic-curl Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chapter2/elliptic-div.html">Elliptic-div Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chapter2/linear-elasticity.html">Linear Elasticity Problem</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Nonlinear Problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../chapter3/poisson.html">Nonlinear Poisson in 2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chapter3/burgers.html">1D Burgers equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter3/navier-stokes-steady.html">the steady-state Navier-Stokes equations for incompressible fluids</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter3/navier-stokes-steady-streamfunction-velocity.html">The streamfunction-velocity formulation of the steady-state Navier-Stokes equations for incompressible fluids</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Advanced subjects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter4/subdomains.html">Subdomains</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter4/poisson-two-subdomains-nitsche.html">The Poisson problem using Nitsche method on two subdomains</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter4/poisson-multi-subdomains-nitsche.html">The Poisson problem using Nitsche method on multiple subdomains</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Applications</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../cfd.html">Computational Fluid Dynamics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cfd/buoyancy-driven_natural_convection.html">Buoyancy-Driven Natural Convection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cfd/compressible_flow_in_a_nozzle.html">Compressible Flow in a Nozzle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cfd/convection-diffusion_equation_in_a_channel.html">Convection-Diffusion Equation in a Channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cfd/free_surface_flow.html">Free Surface Flow (Navier-Stokes with Free Surface)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cfd/heat_conduction_in_a_solid.html">Heat Conduction in a Solid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cfd/incompressible_flow_past_a_cylinder.html">Incompressible Flow Past a Cylinder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cfd/magnetohydrodynamics_flow.html">Magnetohydrodynamics (MHD) Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cfd/particle-laden_flow.html">Particle-Laden Flow (Lagrangian-Eulerian Approach)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cfd/stokes_flow_in_a_lid-driven_cavity.html">Stokes Flow in a Lid-Driven Cavity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cfd/two-phase_flow.html">Two-Phase Flow (Immersed Boundary Method)</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../cfd/non-newtonian-fluids.html">Non-Newtonian Fluids</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cfd/power_law_fluid_flow_in_a_channel.html">Power Law Fluid Flow in a Channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cfd/bingham_plastic_flow_in_a_pipe.html">Bingham Plastic Flow in a Pipe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cfd/oldroyd-b_fluid_flow_in_a_channel.html">Oldroyd-B Fluid Flow in a Channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cfd/herschel-bulkley_fluid_flow_in_a_pipe.html">Herschel-Bulkley Fluid Flow in a Pipe</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cfd/cross_power_law_fluid_flow_in_a_channel.html">Cross Power Law Fluid Flow in a Channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cfd/casson_fluid_flow_in_a_channel.html">Casson Fluid Flow in a Channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cfd/papanastasiou_fluid_flow_in_a_channel.html">Papanastasiou Fluid Flow in a Channel</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fsi.html">Fluid-Structure Interaction</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fsi/flutter_analysis_of_a_flexible_wing_in_fluid_flow.html">Flutter Analysis of a Flexible Wing in Fluid Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fsi/two-way_fluid-structure_interaction_in_a_tube.html">Two-Way Fluid-Structure Interaction in a Tube</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fsi/fluid-structure_interaction_in_a_flexible_channel.html">Fluid-Structure Interaction in a Flexible Channel</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../electromagnetics.html">Electromagnetics</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../mhd.html">MHD</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="mhd-stability-analysis.html">MHD Stability Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="mhd_rayleigh-taylor_instability_in_a_conducting_fluid.html">MHD Rayleigh-Taylor Instability in a Conducting Fluid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mhd_kelvin-helmholtz_instability_in_magnetized_flows.html">MHD Kelvin-Helmholtz Instability in Magnetized Flows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mhd_stability_of_a_current-carrying_plasma_column.html">MHD Stability of a Current-Carrying Plasma Column</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="mhd-turbulence.html">MHD Turbulence</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="mhd_turbulence_in_solar_winds.html">MHD Turbulence in Solar Winds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mhd_turbulence_in_laboratory_plasmas.html">MHD Turbulence in Laboratory Plasmas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mhd_turbulence_in_accretion_disks.html">MHD Turbulence in Accretion Disks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="mhd-heat-transfer.html">MHD Heat Transfer</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="mhd_heat_transfer_in_a_rectangular_domain.html">MHD Heat Transfer in a Rectangular Domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mhd_heat_transfer_in_a_cylindrical_fusion_reactor.html">MHD Heat Transfer in a Cylindrical Fusion Reactor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mhd_heat_transfer_in_a_magma_convection_model.html">MHD Heat Transfer in a Magma Convection Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="mhd-dynamo.html">MHD Dynamo Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="simple_kinematic_dynamo_model.html">Simple Kinematic Dynamo Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mhd_dynamo_in_a_rotating_sphere.html">MHD Dynamo in a Rotating Sphere</a></li>
+<li class="toctree-l3"><a class="reference internal" href="astrophysical_dynamo_in_a_stellar_interior.html">Astrophysical Dynamo in a Stellar Interior</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="mhd-astrophysics.html">MHD Astrophysics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="mhd_star_formation_in_a_protostellar_cloud.html">MHD Star Formation in a Protostellar Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mhd_solar_wind_simulation.html">MHD Solar Wind Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mhd_accretion_disk_in_binary_star_system.html">MHD Accretion Disk in Binary Star System</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="mhd-material-processing.html">MHD Material Processing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="mhd_aluminum_electromagnetic_stirring.html">MHD Aluminum Electromagnetic Stirring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mhd_continuous_casting_of_steel.html">MHD Continuous Casting of Steel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mhd_metal_solidification_in_magnetic_field.html">MHD Metal Solidification in Magnetic Field</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="mhd-drug-targeting.html">Magnetic Drug Targeting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="magnetic_targeting_in_a_blood_vessel.html">Magnetic Targeting in a Blood Vessel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="magnetic_targeting_in_tumor_tissue.html">Magnetic Targeting in Tumor Tissue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="magnetic_targeting_in_the_eye_for_retinal_diseases.html">Magnetic Targeting in the Eye for Retinal Diseases</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Magnetic Fluid Dynamics in Engineering</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="ferrofluid_flow_in_a_microfluidic_device.html">Ferrofluid Flow in a Microfluidic Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ferrofluid_damper_in_mechanical_system.html">Ferrofluid Damper in Mechanical System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="magnetic_fluid_actuator_in_valve_control.html">Magnetic Fluid Actuator in Valve Control</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="mhd-fusion.html">MHD in Nuclear Fusion</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../material-science.html">Material Science</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../material-science/creep_in_viscoelastic_materials.html">Creep in Viscoelastic Materials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material-science/diffusion_and_reaction_in_porous_media.html">Diffusion and Reaction in Porous Media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material-science/elasticity_with_thermal_expansion.html">Elasticity with Thermal Expansion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material-science/heat_conduction_with_phase_change.html">Heat Conduction with Phase Change</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material-science/piezoelectric_material.html">Piezoelectric Material</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../material-science/composite-materials.html">Composite Materials</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/homogenization_of_composite_structures.html">Homogenization of Composite Structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/thermal_conductivity_of_composite_materials.html">Thermal Conductivity of Composite Materials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/fiber-reinforced_composite_materials.html">Fiber-Reinforced Composite Materials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/composite_materials_with_piezoelectric_fibers.html">Composite Materials with Piezoelectric Fibers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/composite_materials_with_thermal_expansion.html">Composite Materials with Thermal Expansion</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../material-science/composite-materials-analysis.html">Composite Materials Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/laminate_plate_bending.html">Laminate Plate Bending</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/composite_beam_analysis.html">Composite Beam Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/composite_pressure_vessel_analysis.html">Composite Pressure Vessel Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/composite_shaft_analysis.html">Composite Shaft Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/composite_shell_structures.html">Composite Shell Structures</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../material-science/additive-manifacturing.html">Additive Manifacturing Process Simulations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/thermal_simulation_in_powder_bed_fusion.html">Thermal Simulation in Powder Bed Fusion (PBF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/fluid_flow_simulation_in_directed_energy_deposition.html">Fluid Flow Simulation in Directed Energy Deposition (DED)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/structural_simulation_in_fused_filament_fabrication.html">Structural Simulation in Fused Filament Fabrication (FFF)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/multi-material_simulation_in_material_jetting.html">Multi-Material Simulation in Material Jetting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../material-science/residual_stress_simulation_in_selective_laser_melting.html">Residual Stress Simulation in Selective Laser Melting (SLM)</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../multiphysics.html">Multiphysics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../documentation/sympde.html">SymPDE API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/sympde.core.html">sympde.core</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.core.algebra.html">sympde.core.algebra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.core.basic.html">sympde.core.basic</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/sympde.core.tests.html">sympde.core.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.core.tests.test_utils.html">sympde.core.tests.test_utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.core.utils.html">sympde.core.utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../../documentation/_autosummary/sympde.calculus.html">sympde.calculus</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.html">sympde.topology</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.analytical_mapping.html">sympde.topology.analytical_mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.basic.html">sympde.topology.basic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.callable_mapping.html">sympde.topology.callable_mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.datatype.html">sympde.topology.datatype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.derivatives.html">sympde.topology.derivatives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.domain.html">sympde.topology.domain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.mapping.html">sympde.topology.mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.measure.html">sympde.topology.measure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.space.html">sympde.topology.space</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.tests.html">sympde.topology.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.tests.test_callable_mapping.html">sympde.topology.tests.test_callable_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.tests.test_derivatives.html">sympde.topology.tests.test_derivatives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.tests.test_field_2d.html">sympde.topology.tests.test_field_2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.tests.test_gallery.html">sympde.topology.tests.test_gallery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.tests.test_logical_expr.html">sympde.topology.tests.test_logical_expr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.tests.test_mapping.html">sympde.topology.tests.test_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.tests.test_space.html">sympde.topology.tests.test_space</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.tests.test_symbolic_expr.html">sympde.topology.tests.test_symbolic_expr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.topology.tests.test_topology.html">sympde.topology.tests.test_topology</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.html">sympde.expr</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.basic.html">sympde.expr.basic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.equation.html">sympde.expr.equation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.errors.html">sympde.expr.errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.evaluation.html">sympde.expr.evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.expr.html">sympde.expr.expr</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.tests.html">sympde.expr.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.tests.test_equation_2d.html">sympde.expr.tests.test_equation_2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.tests.test_essential_bc.html">sympde.expr.tests.test_essential_bc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.tests.test_expr.html">sympde.expr.tests.test_expr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.tests.test_find_2d.html">sympde.expr.tests.test_find_2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.tests.test_newton_2d.html">sympde.expr.tests.test_newton_2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.expr.tests.test_tensor_2d.html">sympde.expr.tests.test_tensor_2d</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/sympde.printing.html">sympde.printing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.printing.latex.html">sympde.printing.latex</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/sympde.printing.tests.html">sympde.printing.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.printing.tests.test_latex.html">sympde.printing.tests.test_latex</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/sympde.exterior.html">sympde.exterior</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.exterior.calculus.html">sympde.exterior.calculus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.exterior.compiler.html">sympde.exterior.compiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.exterior.datatype.html">sympde.exterior.datatype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.exterior.form.html">sympde.exterior.form</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.exterior.inference.html">sympde.exterior.inference</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/sympde.exterior.tests.html">sympde.exterior.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.exterior.tests.test_compiler.html">sympde.exterior.tests.test_compiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.exterior.tests.test_datatype.html">sympde.exterior.tests.test_datatype</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.exterior.tests.test_exterior.html">sympde.exterior.tests.test_exterior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.exterior.tests.test_inference.html">sympde.exterior.tests.test_inference</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/sympde.utilities.html">sympde.utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/sympde.utilities.tests.html">sympde.utilities.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/sympde.utilities.tests.test_utilities.html">sympde.utilities.tests.test_utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/sympde.utilities.utils.html">sympde.utilities.utils</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../documentation/psydac.html">Psydac API Reference</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.html">psydac.api</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.ast.html">psydac.api.ast</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.ast.basic.html">psydac.api.ast.basic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.ast.evaluation.html">psydac.api.ast.evaluation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.ast.expr.html">psydac.api.ast.expr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.ast.fem.html">psydac.api.ast.fem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.ast.glt.html">psydac.api.ast.glt</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.ast.linalg.html">psydac.api.ast.linalg</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.ast.nodes.html">psydac.api.ast.nodes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.ast.parser.html">psydac.api.ast.parser</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.ast.tests.html">psydac.api.ast.tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.ast.utilities.html">psydac.api.ast.utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.basic.html">psydac.api.basic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.discretization.html">psydac.api.discretization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.equation.html">psydac.api.equation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.essential_bc.html">psydac.api.essential_bc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.expr.html">psydac.api.expr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.feec.html">psydac.api.feec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.fem.html">psydac.api.fem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.glt.html">psydac.api.glt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.grid.html">psydac.api.grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.postprocessing.html">psydac.api.postprocessing</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.printing.html">psydac.api.printing</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.printing.pycode.html">psydac.api.printing.pycode</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.settings.html">psydac.api.settings</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.html">psydac.api.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.build_domain.html">psydac.api.tests.build_domain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_2d_biharmonic.html">psydac.api.tests.test_2d_biharmonic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_2d_complex.html">psydac.api.tests.test_2d_complex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_2d_laplace.html">psydac.api.tests.test_2d_laplace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_2d_mapping_biharmonic.html">psydac.api.tests.test_2d_mapping_biharmonic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_2d_mapping_laplace.html">psydac.api.tests.test_2d_mapping_laplace</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_2d_mapping_poisson.html">psydac.api.tests.test_2d_mapping_poisson</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_2d_multipatch_mapping_maxwell.html">psydac.api.tests.test_2d_multipatch_mapping_maxwell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_2d_multipatch_mapping_poisson.html">psydac.api.tests.test_2d_multipatch_mapping_poisson</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_2d_multipatch_poisson.html">psydac.api.tests.test_2d_multipatch_poisson</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_2d_navier_stokes.html">psydac.api.tests.test_2d_navier_stokes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_2d_poisson.html">psydac.api.tests.test_2d_poisson</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_1d_compatible_spaces.html">psydac.api.tests.test_api_1d_compatible_spaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_2d_compatible_spaces.html">psydac.api.tests.test_api_2d_compatible_spaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_2d_fields.html">psydac.api.tests.test_api_2d_fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_2d_scalar_analytical_mapping.html">psydac.api.tests.test_api_2d_scalar_analytical_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_2d_system.html">psydac.api.tests.test_api_2d_system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_2d_vector.html">psydac.api.tests.test_api_2d_vector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_2d_vector_mapping.html">psydac.api.tests.test_api_2d_vector_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_2d_vector_multipatch_mapping.html">psydac.api.tests.test_api_2d_vector_multipatch_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_3d_scalar.html">psydac.api.tests.test_api_3d_scalar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_3d_scalar_mapping.html">psydac.api.tests.test_api_3d_scalar_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_3d_vector.html">psydac.api.tests.test_api_3d_vector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_3d_vector_mapping.html">psydac.api.tests.test_api_3d_vector_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_expr_2d_scalar.html">psydac.api.tests.test_api_expr_2d_scalar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_feec_1d.html">psydac.api.tests.test_api_feec_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_feec_2d.html">psydac.api.tests.test_api_feec_2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_feec_3d.html">psydac.api.tests.test_api_feec_3d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_glt_2d_scalar.html">psydac.api.tests.test_api_glt_2d_scalar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_glt_2d_scalar_mapping.html">psydac.api.tests.test_api_glt_2d_scalar_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_api_glt_2d_vector.html">psydac.api.tests.test_api_glt_2d_vector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_assembly.html">psydac.api.tests.test_assembly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_build_derham_mapping.html">psydac.api.tests.test_build_derham_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_epyccel_flags.html">psydac.api.tests.test_epyccel_flags</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_equation.html">psydac.api.tests.test_equation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_postprocessing.html">psydac.api.tests.test_postprocessing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.test_quadorder.html">psydac.api.tests.test_quadorder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.tests.utils.html">psydac.api.tests.utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.api.utilities.html">psydac.api.utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.cad.html">psydac.cad</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.cad.cad.html">psydac.cad.cad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.cad.gallery.html">psydac.cad.gallery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.cad.geometry.html">psydac.cad.geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.cad.multipatch.html">psydac.cad.multipatch</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.cad.tests.html">psydac.cad.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.cad.tests.test_geometry.html">psydac.cad.tests.test_geometry</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.cad.utils.html">psydac.cad.utils</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.cmd.html">psydac.cmd</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.cmd.mesh.html">psydac.cmd.mesh</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.core.html">psydac.core</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.core.bsplines.html">psydac.core.bsplines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.core.bsplines_kernels.html">psydac.core.bsplines_kernels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.core.field_evaluation_kernels.html">psydac.core.field_evaluation_kernels</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.core.tests.html">psydac.core.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.core.tests.test_bsplines.html">psydac.core.tests.test_bsplines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.core.tests.test_bsplines_kernel.html">psydac.core.tests.test_bsplines_kernel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.core.tests.test_bsplines_pyccel.html">psydac.core.tests.test_bsplines_pyccel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.core.tests.test_field_evaluation_kernel.html">psydac.core.tests.test_field_evaluation_kernel</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.html">psydac.ddm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.basic.html">psydac.ddm.basic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.blocking_data_exchanger.html">psydac.ddm.blocking_data_exchanger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.cart.html">psydac.ddm.cart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.interface_data_exchanger.html">psydac.ddm.interface_data_exchanger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.nonblocking_data_exchanger.html">psydac.ddm.nonblocking_data_exchanger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.partition.html">psydac.ddm.partition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.petsc.html">psydac.ddm.petsc</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.tests.html">psydac.ddm.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.tests.test_cart_1d.html">psydac.ddm.tests.test_cart_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.tests.test_cart_2d.html">psydac.ddm.tests.test_cart_2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.tests.test_cart_3d.html">psydac.ddm.tests.test_cart_3d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.tests.test_multicart_2d.html">psydac.ddm.tests.test_multicart_2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.tests.test_partition.html">psydac.ddm.tests.test_partition</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.ddm.utilities.html">psydac.ddm.utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.html">psydac.feec</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.derivatives.html">psydac.feec.derivatives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.global_projectors.html">psydac.feec.global_projectors</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.multipatch.html">psydac.feec.multipatch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.multipatch.api.html">psydac.feec.multipatch.api</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.multipatch.examples.html">psydac.feec.multipatch.examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.multipatch.fem_linear_operators.html">psydac.feec.multipatch.fem_linear_operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.multipatch.multipatch_domain_utilities.html">psydac.feec.multipatch.multipatch_domain_utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.multipatch.non_matching_operators.html">psydac.feec.multipatch.non_matching_operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.multipatch.operators.html">psydac.feec.multipatch.operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.multipatch.plotting_utilities.html">psydac.feec.multipatch.plotting_utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.multipatch.tests.html">psydac.feec.multipatch.tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.multipatch.utilities.html">psydac.feec.multipatch.utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.multipatch.utils_conga_2d.html">psydac.feec.multipatch.utils_conga_2d</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.pull_push.html">psydac.feec.pull_push</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.pushforward.html">psydac.feec.pushforward</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.tests.html">psydac.feec.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.tests.test_axis_projection.html">psydac.feec.tests.test_axis_projection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.tests.test_commuting_projections.html">psydac.feec.tests.test_commuting_projections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.tests.test_commuting_projections_dual.html">psydac.feec.tests.test_commuting_projections_dual</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.tests.test_differentiation_matrices.html">psydac.feec.tests.test_differentiation_matrices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.tests.test_global_projectors.html">psydac.feec.tests.test_global_projectors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.tests.test_projections_parallel.html">psydac.feec.tests.test_projections_parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.feec.tests.test_pushforward.html">psydac.feec.tests.test_pushforward</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.html">psydac.fem</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.basic.html">psydac.fem.basic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.context.html">psydac.fem.context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.grid.html">psydac.fem.grid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.partitioning.html">psydac.fem.partitioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.projectors.html">psydac.fem.projectors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.splines.html">psydac.fem.splines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.tensor.html">psydac.fem.tensor</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.tests.html">psydac.fem.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.tests.analytical_profiles_1d.html">psydac.fem.tests.analytical_profiles_1d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.tests.analytical_profiles_base.html">psydac.fem.tests.analytical_profiles_base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.tests.splines_error_bounds.html">psydac.fem.tests.splines_error_bounds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.tests.test_eval_fields_parallel.html">psydac.fem.tests.test_eval_fields_parallel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.tests.test_product.html">psydac.fem.tests.test_product</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.tests.test_spline_histopolation.html">psydac.fem.tests.test_spline_histopolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.tests.test_spline_interpolation.html">psydac.fem.tests.test_spline_interpolation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.tests.test_splines.html">psydac.fem.tests.test_splines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.tests.test_splines_par.html">psydac.fem.tests.test_splines_par</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.tests.utilities.html">psydac.fem.tests.utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.fem.vector.html">psydac.fem.vector</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.html">psydac.linalg</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.basic.html">psydac.linalg.basic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.block.html">psydac.linalg.block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.direct_solvers.html">psydac.linalg.direct_solvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.fft.html">psydac.linalg.fft</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.kernels.html">psydac.linalg.kernels</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.kernels.axpy_kernels.html">psydac.linalg.kernels.axpy_kernels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.kernels.inner_kernels.html">psydac.linalg.kernels.inner_kernels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.kernels.matvec_kernels.html">psydac.linalg.kernels.matvec_kernels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.kernels.stencil2IJV_kernels.html">psydac.linalg.kernels.stencil2IJV_kernels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.kernels.stencil2coo_kernels.html">psydac.linalg.kernels.stencil2coo_kernels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.kernels.transpose_kernels.html">psydac.linalg.kernels.transpose_kernels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.kron.html">psydac.linalg.kron</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.solvers.html">psydac.linalg.solvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.stencil.html">psydac.linalg.stencil</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.tests.html">psydac.linalg.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.tests.test_block.html">psydac.linalg.tests.test_block</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.tests.test_fft.html">psydac.linalg.tests.test_fft</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.tests.test_kron_direct_solver.html">psydac.linalg.tests.test_kron_direct_solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.tests.test_kron_stencil_matrix.html">psydac.linalg.tests.test_kron_stencil_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.tests.test_linalg.html">psydac.linalg.tests.test_linalg</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.tests.test_matrix_free.html">psydac.linalg.tests.test_matrix_free</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.tests.test_solvers.html">psydac.linalg.tests.test_solvers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.tests.test_stencil_interface_matrix.html">psydac.linalg.tests.test_stencil_interface_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.tests.test_stencil_matrix.html">psydac.linalg.tests.test_stencil_matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.tests.test_stencil_vector.html">psydac.linalg.tests.test_stencil_vector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.tests.test_stencil_vector_space.html">psydac.linalg.tests.test_stencil_vector_space</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.topetsc.html">psydac.linalg.topetsc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.linalg.utilities.html">psydac.linalg.utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.mapping.html">psydac.mapping</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.mapping.discrete.html">psydac.mapping.discrete</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.mapping.discrete_gallery.html">psydac.mapping.discrete_gallery</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.mapping.tests.html">psydac.mapping.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.mapping.tests.test_discrete_mapping.html">psydac.mapping.tests.test_discrete_mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.mapping.tests.visual_test_discrete_mapping_2d.html">psydac.mapping.tests.visual_test_discrete_mapping_2d</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.mapping.tests.visual_test_discrete_mapping_3d_surface.html">psydac.mapping.tests.visual_test_discrete_mapping_3d_surface</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.polar.html">psydac.polar</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.polar.c1_cart.html">psydac.polar.c1_cart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.polar.c1_linops.html">psydac.polar.c1_linops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.polar.c1_projections.html">psydac.polar.c1_projections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.polar.c1_spaces.html">psydac.polar.c1_spaces</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.polar.dense.html">psydac.polar.dense</a></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.polar.tests.html">psydac.polar.tests</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.polar.tests.test_c1_linops.html">psydac.polar.tests.test_c1_linops</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.polar.tests.test_c1_projections.html">psydac.polar.tests.test_c1_projections</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.html">psydac.pyccel</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.ast.html">psydac.pyccel.ast</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.ast.basic.html">psydac.pyccel.ast.basic</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.ast.builtins.html">psydac.pyccel.ast.builtins</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.ast.core.html">psydac.pyccel.ast.core</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.ast.datatypes.html">psydac.pyccel.ast.datatypes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.ast.functionalexpr.html">psydac.pyccel.ast.functionalexpr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.ast.mathext.html">psydac.pyccel.ast.mathext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.ast.numbers.html">psydac.pyccel.ast.numbers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.ast.numpyext.html">psydac.pyccel.ast.numpyext</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.ast.singleton.html">psydac.pyccel.ast.singleton</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.ast.type_inference.html">psydac.pyccel.ast.type_inference</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.ast.utilities.html">psydac.pyccel.ast.utilities</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.codegen.html">psydac.pyccel.codegen</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.codegen.printing.html">psydac.pyccel.codegen.printing</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.errors.html">psydac.pyccel.errors</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.errors.errors.html">psydac.pyccel.errors.errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.errors.messages.html">psydac.pyccel.errors.messages</a></li>
+</ul>
+</details></li>
+<li class="toctree-l3 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.symbolic.html">psydac.pyccel.symbolic</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../documentation/_autosummary/psydac.pyccel.symbolic.lambdify.html">psydac.pyccel.symbolic.lambdify</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../documentation/_autosummary/psydac.utilities.html">psydac.utilities</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.utilities.quadratures.html">psydac.utilities.quadratures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.utilities.utils.html">psydac.utilities.utils</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../documentation/_autosummary/psydac.utilities.vtk.html">psydac.utilities.vtk</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pyccel/IGA-Python" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pyccel/IGA-Python/issues/new?title=Issue%20on%20page%20%2Fchapter5/mhd/mhd-fluid-dynamics.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapter5/mhd/mhd-fluid-dynamics.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Magnetic Fluid Dynamics in Engineering</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-models">Mathematical Models</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="magnetic-fluid-dynamics-in-engineering">
+<h1>Magnetic Fluid Dynamics in Engineering<a class="headerlink" href="#magnetic-fluid-dynamics-in-engineering" title="Link to this heading">#</a></h1>
+<p>Magnetic Fluid Dynamics (MFD) in engineering involves the study of the behavior of ferrofluids or magnetizable fluids under the influence of magnetic fields. These fluids are colloidal suspensions of ferromagnetic or superparamagnetic nanoparticles in a carrier liquid. The behavior of such fluids is influenced by both fluid dynamics and magnetic interactions. Below are the mathematical models and example test cases for Magnetic Fluid Dynamics in engineering:</p>
+<section id="mathematical-models">
+<h2>Mathematical Models<a class="headerlink" href="#mathematical-models" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>MHD Continuity Equation:
+$<span class="math notranslate nohighlight">\(
+\frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{v}) = 0
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\rho<span class="math notranslate nohighlight">\( is the fluid density, and \)</span>\mathbf{v}$ is the fluid velocity.</p></li>
+<li><p>MHD Momentum Equation:
+$<span class="math notranslate nohighlight">\(
+\rho \frac{D\mathbf{v}}{Dt} = -\nabla p + \rho \mathbf{g} + \nabla \cdot \boldsymbol{\tau} + \mathbf{J} \times \mathbf{B} + \nu \nabla^2 \mathbf{v}
+\)</span><span class="math notranslate nohighlight">\(
+incorporating the viscous term (\)</span>\nu \nabla^2 \mathbf{v}$) for fluid viscosity.</p></li>
+<li><p>Magnetic Induction Equation:
+$<span class="math notranslate nohighlight">\(
+\frac{\partial \mathbf{B}}{\partial t} = \nabla \times (\mathbf{v} \times \mathbf{B} - \eta \nabla \times \mathbf{B})
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\mathbf{B}<span class="math notranslate nohighlight">\( is the magnetic field, and \)</span>\eta$ is the magnetic diffusivity.</p></li>
+<li><p>Magnetic Force Equation:
+$<span class="math notranslate nohighlight">\(
+\mathbf{F}_{\text{magnetic}} = \nabla (\mathbf{m} \cdot \mathbf{B})
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\mathbf{m}$ is the magnetic moment of the ferrofluid.</p></li>
+</ol>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter5/mhd"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="magnetic_targeting_in_the_eye_for_retinal_diseases.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Magnetic Targeting in the Eye for Retinal Diseases</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ferrofluid_flow_in_a_microfluidic_device.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Ferrofluid Flow in a Microfluidic Device</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-models">Mathematical Models</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ahmed Ratnani
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

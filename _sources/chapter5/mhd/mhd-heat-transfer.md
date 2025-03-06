@@ -1,0 +1,37 @@
+# MHD Heat Transfer
+
+Magnetohydrodynamics (MHD) Heat Transfer involves the study of thermal phenomena in electrically conducting fluids in the presence of magnetic fields. This interdisciplinary field finds applications in various scenarios, from astrophysical environments to industrial processes. In MHD heat transfer, the interaction between fluid flow, magnetic fields, and heat transfer processes is considered. Below are the mathematical models governing MHD heat transfer, along with a brief description.
+
+## MHD Heat Transfer Equations
+
+The MHD heat transfer equations are an extension of the Magnetohydrodynamics equations, incorporating heat transfer terms. The fundamental equations are as follows:
+
+1. MHD Continuity Equation:
+   $$
+   \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \mathbf{v}) = 0
+   $$
+   where $\rho$ is the fluid density, and $\mathbf{v}$ is the fluid velocity.
+
+2. MHD Momentum Equation:
+   $$
+   \rho \frac{D\mathbf{v}}{Dt} = -\nabla p + \rho \mathbf{g} + \nabla \cdot \boldsymbol{\tau} + \mathbf{J} \times \mathbf{B} + \nu \nabla^2 \mathbf{v}
+   $$
+   incorporating the viscous term ($\nu \nabla^2 \mathbf{v}$) for fluid viscosity.
+
+3. MHD Induction Equation:
+   $$
+   \frac{\partial \mathbf{B}}{\partial t} = \nabla \times (\mathbf{v} \times \mathbf{B} - \eta \nabla \times \mathbf{B})
+   $$
+   where $\eta$ is the magnetic diffusivity.
+
+4. MHD Ohm's Law:
+   $$
+   \mathbf{J} = \sigma (\mathbf{E} + \mathbf{v} \times \mathbf{B})
+   $$
+   with $\sigma$ as the electrical conductivity and $\mathbf{E}$ as the electric field.
+
+5. MHD Energy Equation:
+   $$
+   \rho C_p \frac{DT}{Dt} = -p \nabla \cdot \mathbf{v} + \nabla \cdot (k \nabla T) + \frac{1}{\sigma}(\mathbf{J} \cdot \mathbf{E})
+   $$
+   including heat conduction ($k \nabla T$) and Joule heating ($\frac{1}{\sigma}(\mathbf{J} \cdot \mathbf{E})$) terms.

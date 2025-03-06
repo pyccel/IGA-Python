@@ -1,0 +1,172 @@
+psydac.api.ast.nodes
+====================
+
+.. automodule:: psydac.api.ast.nodes
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      construct_itergener
+      construct_logical_expressions
+      get_number_derivatives
+      random_string
+      toInteger
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      AddNode
+      Allocate
+      AndNode
+      ArityType
+      Array
+      ArrayNode
+      AtomicNode
+      BaseNode
+      BasisAtom
+      BilinearArity
+      Block
+      BlockLinearOperatorNode
+      BlockScalarLocalBasis
+      BlockStencilMatrixGlobalBasis
+      BlockStencilMatrixLocalBasis
+      BlockStencilVectorGlobalBasis
+      BlockStencilVectorLocalBasis
+      CoefficientBasis
+      ComputeKernelExpr
+      ComputeLogical
+      ComputeLogicalBasis
+      ComputeNode
+      ComputePhysical
+      ComputePhysicalBasis
+      Element
+      ElementOf
+      EqNode
+      EvalField
+      EvalMapping
+      Evaluation
+      ExprNode
+      Expression
+      FieldEvaluation
+      FloorDiv
+      FunctionalArity
+      GeneratorBase
+      GeometryAtom
+      GeometryExpr
+      GeometryExpressions
+      GlobalElementBasis
+      GlobalSpanArray
+      GlobalTensorQuadratureBasis
+      GlobalTensorQuadratureGrid
+      GlobalTensorQuadratureTestBasis
+      GlobalTensorQuadratureTrialBasis
+      GlobalThreadEnds
+      GlobalThreadSizes
+      GlobalThreadSpanArray
+      GlobalThreadStarts
+      Grid
+      IfNode
+      IndexDerivative
+      IndexDof
+      IndexDofTest
+      IndexDofTrial
+      IndexElement
+      IndexInnerDofTest
+      IndexNode
+      IndexOuterDofTest
+      IndexQuadrature
+      IntDivNode
+      IteratorBase
+      LengthDof
+      LengthDofTest
+      LengthDofTrial
+      LengthElement
+      LengthInnerDofTest
+      LengthNode
+      LengthOuterDofTest
+      LengthQuadrature
+      LinearArity
+      LocalElementBasis
+      LocalIndexElement
+      LocalSpanArray
+      LocalTensorQuadratureBasis
+      LocalTensorQuadratureGrid
+      LocalTensorQuadratureTestBasis
+      LocalTensorQuadratureTrialBasis
+      LocalThreadEnds
+      LocalThreadStarts
+      LogicalBasisValue
+      LogicalGeometryValue
+      LogicalValueNode
+      Loop
+      MappingEvaluation
+      Mask
+      MatrixCoordsFromRank
+      MatrixGlobalBasis
+      MatrixLocalBasis
+      MatrixNode
+      MatrixQuadrature
+      MatrixRankFromCoords
+      Max
+      Min
+      MulNode
+      NeighbourThreadCoordinates
+      NotNode
+      NumThreads
+      Pads
+      ParallelBlock
+      Pattern
+      PhysicalBasisValue
+      PhysicalGeometryValue
+      PhysicalValueNode
+      PlusGlobalTensorQuadratureGrid
+      PlusLocalTensorQuadratureGrid
+      PlusTensorQuadrature
+      ProductGenerator
+      ProductIteration
+      ProductIterator
+      RAT
+      RankDimension
+      RankNode
+      Reduce
+      Reduction
+      Reset
+      ScalarLocalBasis
+      ScalarNode
+      Span
+      SpanArray
+      SplitArray
+      StencilMatrixGlobalBasis
+      StencilMatrixLocalBasis
+      StencilVectorGlobalBasis
+      StencilVectorLocalBasis
+      StrictLessThanNode
+      TensorAdd
+      TensorAssignExpr
+      TensorBasis
+      TensorExpression
+      TensorGenerator
+      TensorIntDiv
+      TensorInteger
+      TensorIteration
+      TensorIterator
+      TensorMax
+      TensorMul
+      TensorQuadrature
+      TensorQuadratureBasis
+      TensorQuadratureTestBasis
+      TensorQuadratureTrialBasis
+      TensorTestBasis
+      TensorTrialBasis
+      ThreadCoordinates
+      ThreadId
+      ValueNode
+      VectorAssign
+      WeightedVolumeQuadrature
+      WhileLoop
+      Zeros
+      ZerosLike
+   
