@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  deploy-book:
+  build_book:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: true
@@ -77,11 +77,22 @@ jobs:
     - name: Build Jupyter Book
       run: make docs
 
-    - name: Deploy to GitHub Pages
-      if: ${{ (github.ref == 'refs/heads/master') && startsWith(matrix.os, 'ubuntu') }}
-      run: |
-        pip install ghp-import
-        ghp-import -n -p -f _build/html
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
 
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '_build/html'
+
+  deploy_book:
+    if: github.event_name != 'pull_request'
+    needs: build_book
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
