@@ -1,4 +1,4 @@
-name: Build IGA-Python Jupyter Book
+name: Jupyter book
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ master ]
 
 jobs:
-  deploy-book:
+  build:
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: true
@@ -15,14 +15,11 @@ jobs:
         include:
           - os: ubuntu-24.04
             python-version: '3.12'
-
           - os: macos-15
             python-version: '3.12'
-
+    name: build / ${{ matrix.os }} / python${{ matrix.python-version }}
     env:
       FC: gfortran-14
-
-    name: ${{ matrix.os }} / Python ${{ matrix.python-version }}
 
     steps:
     - uses: actions/checkout@v4
@@ -77,11 +74,23 @@ jobs:
     - name: Build Jupyter Book
       run: make docs
 
+    - name: Upload artifact
+      id: deployment
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: _build/html
+        name: github-pages_${{ matrix.os }}_python${{ matrix.python-version }}
+      
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
     - name: Deploy to GitHub Pages
-      if: ${{ (github.ref == 'refs/heads/master') && startsWith(matrix.os, 'ubuntu') }}
-      run: |
-        pip install ghp-import
-        ghp-import -n -p -f _build/html
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      id: deployment
+      uses: actions/deploy-pages@v4
+      with:
+        artifact_name: github-pages_ubuntu-24.04_python3.12
