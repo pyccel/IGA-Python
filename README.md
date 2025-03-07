@@ -1,6 +1,6 @@
 # Welcome to IGA-Python
 
-This project provides a tutorial for isogeometric analysis (IGA) using Python and the Psydac library (pyccel/psydac). The numerical examples can be consulted online at pyccel.github.io/IGA-Python, or run with JupyterNotebook on a personal computer.
+This project provides a tutorial for isogeometric analysis (IGA) using Python and the Psydac library (pyccel/psydac). The numerical examples can be consulted online at [pyccel.github.io/IGA-Python](https://pyccel.github.io/IGA-Python), or run with Jupyter Notebook on a personal computer.
 
 ## Editing and building IGA-Python locally
 
@@ -70,3 +70,15 @@ nb-clean remove-filter
 3. Stage the modified files with `git add`. Then run `git diff` to check if the changed `*.ipynb` notebooks doesn't include unnecessary diffs (e.g. notebook metadata).
 4. `git commit` your changes.
 5. *OPTIONAL*. Share your changes to this repo via a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
+
+## Contributing
+
+There are several ways to contribute to this project.
+If you find a problem, please check if this is already discussed in one of [our issues](https://github.com/pyccel/IGA-Python/issues) and feel free to add your opinion; if not, please create a [new issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue).
+If you want to fix an issue, improve our notebooks, or add a new example, please [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) our Git repository, make and commit your changes, and create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) (PRs).
+
+All PRs are reviewed by the project maintainers.
+During the PR review, GitHub workflows are triggered on various platforms.
+These workflows build the notebooks and prepare them to be deployed as a static HTML website to [pyccel.github.io/IGA-Python](https://pyccel.github.io/IGA-Python).
+Deploy does not happen before the final merge of the PR, but the HTML files can be downloaded as a zip file from GitHub, and opened with any browser for inspection.
+To download the zip file, select the workflow run of interest from the `Actions` tab, click on `Summary`, and look under `Artifacts`.
