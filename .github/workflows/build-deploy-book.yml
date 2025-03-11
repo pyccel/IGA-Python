@@ -75,7 +75,8 @@ jobs:
       id: changed-python-notebooks
       uses: tj-actions/changed-files@v45
       with:
-        files:  **.ipynb
+        files: |
+          **.ipynb
 
     - name: Check for dirty Python notebooks
       if: steps.changed-python-notebooks.outputs.any_changed == 'true'
