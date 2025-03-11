@@ -175,5 +175,8 @@ parts:
       - file: chapter5/multiphysics
   - caption: Documentation
     chapters:
-      - file: documentation/sympde
-      - file: documentation/psydac
+    - url: https://pyccel.github.io/psydac/index.html
+      title: Psydac
+    - url: https://sympde.readthedocs.io/en/latest/
+      title: SymPDE
+
