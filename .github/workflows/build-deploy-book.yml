@@ -75,6 +75,7 @@ jobs:
       id: changed-python-notebooks
       uses: tj-actions/changed-files@v45
       with:
+        since_last_remote_commit: true
         files: |
           **.ipynb
 
