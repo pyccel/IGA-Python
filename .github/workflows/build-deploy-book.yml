@@ -71,6 +71,35 @@ jobs:
         pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Get list of changed Python notebooks
+      id: changed-python-notebooks
+      uses: tj-actions/changed-files@v45
+      with:
+        files:  **.ipynb
+
+    - name: Check for dirty Python notebooks
+      if: steps.changed-python-notebooks.outputs.any_changed == 'true'
+      env:
+        ALL_CHANGED_FILES: ${{ steps.changed-python-notebooks.outputs.all_changed_files }}
+      run: |
+        # Check if there are dirty notebooks
+        dirty_ipynb=()
+        for file in ${ALL_CHANGED_FILES[*]}; do
+          echo "Checking $file..."
+          if ! nb-clean check $file >/dev/null 2>&1; then
+            dirty_ipynb+=($file)
+          fi
+        done
+
+        # Trigger failure if dirty notebooks were found
+        if [[ ! -z "${dirty_ipynb[@]}" ]]; then
+          echo "ERROR: Found dirty Python notebooks. Please clean the notebooks by running"
+          echo ""
+          echo "nb-clean clean --remove-empty-cells --remove-all-notebook-metadata ${dirty_ipynb[*]}"
+          echo ""
+          exit 1
+        fi
+
     - name: Build Jupyter Book
       run: make docs
 
