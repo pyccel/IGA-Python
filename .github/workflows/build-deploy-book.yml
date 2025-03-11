@@ -97,6 +97,8 @@ jobs:
           echo "nb-clean clean --remove-empty-cells --remove-all-notebook-metadata ${dirty_ipynb[*]}"
           echo ""
           exit 1
+        else
+          echo "SUCCESS: All changed notebooks are clean."
         fi
 
     - name: Build Jupyter Book
