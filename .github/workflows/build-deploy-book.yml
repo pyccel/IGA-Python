@@ -72,14 +72,16 @@ jobs:
         pip install -r requirements.txt
 
     - name: Get list of changed Python notebooks
+      id: changed-ipynb-files
       uses: tj-actions/changed-files@v45
       with:
         files: |
           **.ipynb
 
     - name: Check for dirty Python notebooks
+      if: steps.changed-ipynb-files.outputs.any_changed == 'true'
       env:
-        ALL_CHANGED_FILES: ${{ steps.changed-python-notebooks.outputs.all_changed_files }}
+        ALL_CHANGED_FILES: ${{ steps.changed-ipynb-files.outputs.all_changed_files }}
       run: |
         # Check if there are dirty notebooks
         dirty_ipynb=()
