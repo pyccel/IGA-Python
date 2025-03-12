@@ -66,6 +66,10 @@ parts:
       - file: chapter3/navier-stokes-steady
         sections:
           - file: chapter3/navier-stokes-steady-streamfunction-velocity
+  - caption: Exercises
+    chapters:
+      - file: exercises/harmonic-fem
+      - file: exercises/harmonic-feec
   - caption: Advanced subjects 
     chapters:
       - file: chapter4/subdomains
