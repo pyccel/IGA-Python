@@ -8,8 +8,8 @@ from sympde.topology        import element_of
 
 from psydac.api.essential_bc        import apply_essential_bc
 from psydac.linalg.basic            import LinearOperator, Vector
-from psydac.linalg.block            import BlockVectorSpace
-from psydac.linalg.stencil          import StencilVectorSpace
+from psydac.linalg.block            import BlockVectorSpace, BlockLinearOperator
+from psydac.linalg.stencil          import StencilVectorSpace, StencilMatrix
 
 
 def get_unit_vector(v, n1, n2, n3, pads1, pads2, pads3):
@@ -129,6 +129,77 @@ class H1BoundaryProjector2D(LinearOperator):
 
         v.copy(out=out)
         apply_essential_bc(out, *BC)
+        return out
+
+class HcurlBoundaryProjector2D(LinearOperator):
+    def __init__(self, V1, V1_vs, periodic=[False, False]):
+
+        assert all([isinstance(P, bool) for P in periodic])
+
+        self._domain    = V1_vs
+        self._codomain  = V1_vs
+        self._space     = V1
+        self._periodic  = periodic
+
+        self._BC        = self._get_BC()
+        
+    def copy(self):
+        return HcurlBoundaryProjector2D(self._space, self._domain, self._periodic)
+
+    def _get_BC(self):
+
+        periodic = self._periodic
+        if all([P == True for P in periodic]):
+            return None
+        
+        space   = self._space
+        u       = element_of(space, name='u')
+        bcs     = [EssentialBC(u, 0, side, position=0) for side in space.domain.boundary]
+
+        bcs_x   = [bcs[0], bcs[1]] if periodic[0] == False else []
+        bcs_y   = [bcs[2], bcs[3]] if periodic[1] == False else []
+
+        BC      = bcs_x + bcs_y
+
+        bcs_x = [bcs[2], bcs[3]] if periodic[1] == False else []
+        bcs_y = [bcs[0], bcs[1]] if periodic[0] == False else []
+
+        BC  = [bcs_x, bcs_y]
+
+        return BC
+
+    @property
+    def domain(self):
+        return self._domain
+    
+    @property
+    def codomain(self):
+        return self._codomain
+    
+    @property
+    def dtype(self):
+        return None
+    
+    def tosparse(self):
+        raise NotImplementedError
+    
+    def toarray(self):
+        return toarray(self)
+    
+    def transpose(self, conjugate=False):
+        return self
+
+    def dot(self, v, out=None):
+        BC = self._BC
+        if out is not None:
+            assert isinstance(out, Vector)
+            assert out.space is self.codomain
+        else:
+            out = self.codomain.zeros()
+
+        v.copy(out=out)
+        for outi, BCi in zip(out, BC):
+            apply_essential_bc(outi, *BCi)
         return out
 
 def plot(gridsize_x, gridsize_y, title, funs, titles, surface_plot=False):
