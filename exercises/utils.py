@@ -1,15 +1,20 @@
-import  h5py
 import  numpy               as np
 import  matplotlib.pyplot   as plt
 from    matplotlib          import cm, colors
 
-from sympde.expr            import EssentialBC
-from sympde.topology        import element_of
+from scipy.sparse                   import dia_matrix
 
+from sympde.expr                    import EssentialBC, BilinearForm, integral
+from sympde.topology                import element_of, elements_of, Line, Derham
+from sympde.topology.datatype       import H1Space, HcurlSpace, L2Space
+
+from psydac.api.discretization      import discretize
 from psydac.api.essential_bc        import apply_essential_bc
 from psydac.linalg.basic            import LinearOperator, Vector
 from psydac.linalg.block            import BlockVectorSpace, BlockLinearOperator
-from psydac.linalg.stencil          import StencilVectorSpace, StencilMatrix
+from psydac.linalg.direct_solvers   import BandedSolver
+from psydac.linalg.kron             import KroneckerLinearSolver
+from psydac.linalg.stencil          import StencilVectorSpace
 
 
 def get_unit_vector(v, n1, n2, n3, pads1, pads2, pads3):
@@ -254,3 +259,85 @@ def plot(gridsize_x, gridsize_y, title, funs, titles, surface_plot=False):
             if n_plots > 1:
                 ax.set_title ( titles[i] )
         plt.show()
+
+def to_bnd(A):
+
+    dmat = dia_matrix(A.toarray(), dtype=A.dtype)
+    la   = abs(dmat.offsets.min())
+    ua   = dmat.offsets.max()
+    cmat = dmat.tocsr()
+
+    A_bnd = np.zeros((1+ua+2*la, cmat.shape[1]), A.dtype)
+
+    for i,j in zip(*cmat.nonzero()):
+        A_bnd[la+ua+i-j, j] = cmat[i,j]
+
+    return A_bnd, la, ua
+
+def matrix_to_bandsolver(A):
+    A.remove_spurious_entries()
+    A_bnd, la, ua = to_bnd(A)
+    return BandedSolver(ua, la, A_bnd)
+
+def get_M1_block_kron_solver_2D(V1, ncells, degree, periodic):
+    """
+    Given a 2D DeRham sequenece (V0 = H(grad) --grad--> V1 = H(curl) --curl--> V2 = L2)
+    discreticed using ncells, degree and periodic,
+
+        domain = Square('C', bounds1=(0, 1), bounds2=(0, 1))
+        derham = Derham(domain)
+        domain_h = discretize(domain, ncells=ncells, periodic=periodic, comm=comm)
+        derham_h = discretize(derham, domain_h, degree=degree),
+
+    returns the inverse of the mass matrix M1 as a BlockLinearOperator consisting of two KroneckerLinearSolvers on the diagonal.
+    """
+    # assert 3D
+    assert len(ncells) == 2
+    assert len(degree) == 2
+    assert len(periodic) == 2
+
+    # 1D domain to be discreticed using the respective values of ncells, degree, periodic
+    domain_1d = Line('L', bounds=(0,1))
+    derham_1d = Derham(domain_1d)
+
+    # storage for the 1D mass matrices
+    M0_matrices = []
+    M1_matrices = []
+
+    # assembly of the 1D mass matrices
+    for (n, p, P) in zip(ncells, degree, periodic):
+
+        domain_1d_h = discretize(domain_1d, ncells=[n], periodic=[P])
+        derham_1d_h = discretize(derham_1d, domain_1d_h, degree=[p])
+
+        u_1d_0, v_1d_0 = elements_of(derham_1d.V0, names='u_1d_0, v_1d_0')
+        u_1d_1, v_1d_1 = elements_of(derham_1d.V1, names='u_1d_1, v_1d_1')
+
+        a_1d_0 = BilinearForm((u_1d_0, v_1d_0), integral(domain_1d, u_1d_0 * v_1d_0))
+        a_1d_1 = BilinearForm((u_1d_1, v_1d_1), integral(domain_1d, u_1d_1 * v_1d_1))
+
+        a_1d_0_h = discretize(a_1d_0, domain_1d_h, (derham_1d_h.V0, derham_1d_h.V0))
+        a_1d_1_h = discretize(a_1d_1, domain_1d_h, (derham_1d_h.V1, derham_1d_h.V1))
+
+        M_1d_0 = a_1d_0_h.assemble()
+        M_1d_1 = a_1d_1_h.assemble()
+
+        M0_matrices.append(M_1d_0)
+        M1_matrices.append(M_1d_1)
+
+    V1_1 = V1[0]
+    V1_2 = V1[1]
+
+    B1_mat = [M1_matrices[0], M0_matrices[1]]
+    B2_mat = [M0_matrices[0], M1_matrices[1]]
+
+    B1_solvers = [matrix_to_bandsolver(Ai) for Ai in B1_mat]
+    B2_solvers = [matrix_to_bandsolver(Ai) for Ai in B2_mat]
+
+    B1_kron_inv = KroneckerLinearSolver(V1_1, V1_1, B1_solvers)
+    B2_kron_inv = KroneckerLinearSolver(V1_2, V1_2, B2_solvers)
+
+    M1_block_kron_solver = BlockLinearOperator(V1, V1, ((B1_kron_inv, None), 
+                                                        (None, B2_kron_inv)))
+
+    return M1_block_kron_solver
