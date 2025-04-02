@@ -3,6 +3,7 @@ import  matplotlib.pyplot   as plt
 from    matplotlib          import cm, colors
 
 from scipy.sparse                   import dia_matrix
+from scipy.sparse.linalg            import eigsh
 
 from sympde.expr                    import EssentialBC, BilinearForm, integral
 from sympde.topology                import element_of, elements_of, Line, Derham
@@ -341,3 +342,41 @@ def get_M1_block_kron_solver_2D(V1, ncells, degree, periodic):
                                                         (None, B2_kron_inv)))
 
     return M1_block_kron_solver
+
+def get_eigenvalues(nb_eigs, sigma, A_m, M_m):
+    """
+    Compute the eigenvalues of the matrix A close to sigma and right-hand-side M
+    Function seen and adapted from >>> psydac_dev/psydac/feec/multipatch/examples/hcurl_eigen_pbms_conga_2d.py <<< 
+    (Commit a748a4d8c1569a8765f6688d228f65ea6073c252)
+
+    Parameters
+    ----------
+    nb_eigs : int
+        Number of eigenvalues to compute
+    sigma : float
+        Value close to which the eigenvalues are computed
+    A_m : sparse matrix
+        Matrix A
+    M_m : sparse matrix
+        Matrix M
+    """
+
+    print()
+    print('-----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  ----- ')
+    print(
+        'computing {0} eigenvalues (and eigenvectors) close to sigma={1} with scipy.sparse.eigsh...'.format(nb_eigs, sigma))
+    mode = 'normal'
+    which = 'LM'
+    ncv = 4 * nb_eigs
+    max_shape_splu = 24000
+    if A_m.shape[0] >= max_shape_splu:
+        raise ValueError(f'Matrix too large.')
+        
+    eigenvalues, eigenvectors = eigsh(
+        A_m, k=nb_eigs, M=M_m, sigma=sigma, mode=mode, which=which, ncv=ncv)
+
+    print("done: eigenvalues found: " + repr(eigenvalues))
+    print('-----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----  -----')
+    print()
+
+    return eigenvalues, eigenvectors
