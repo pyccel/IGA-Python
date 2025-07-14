@@ -59,6 +59,9 @@ parts:
       - file: chapter2/elliptic-curl
       - file: chapter2/elliptic-div
       - file: chapter2/linear-elasticity
+        sections:
+          - file: chapter2/linear-elasticity-v1
+          - file: chapter2/linear-elasticity-v2
   - caption: Nonlinear Problems 
     chapters:
       - file: chapter3/poisson
