@@ -19,3 +19,5 @@ usr
 .env
 .iga-python
 *_autosummary*
+
+.DS_Store
