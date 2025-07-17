@@ -58,7 +58,7 @@ parts:
           - file: chapter2/stokes-v2
       - file: chapter2/elliptic-curl
       - file: chapter2/elliptic-div
-      - file: chapter2/linear-elasticity
+      - file: chapter2/linear-elasticity-intro
         sections:
           - file: chapter2/linear-elasticity-v1
           - file: chapter2/linear-elasticity-v2
