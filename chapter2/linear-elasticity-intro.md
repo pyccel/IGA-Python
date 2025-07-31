@@ -4,12 +4,10 @@
 The governing equations for small elastic deformations of a body $\Omega$ can be expressed as:
 
 $$
-
-\begin{align}
+\begin{aligned}
     -\nabla \cdot \sigma(u) &= f & \text{in } \Omega \\
     \sigma(u) &= C : \epsilon(u) & \text{in } \Omega \\
-\end{align}
-
+\end{aligned}
 $$
 
 where : 
@@ -25,13 +23,11 @@ Then, the strong formulation of linear elasticity is :
 Find $u \in V$ such that
 
 $$
-
-\begin{align}
+\begin{aligned}
     -\nabla \cdot \sigma (u) &= f & \text{in } & \Omega \\
     u &= 0 & \text{on } & \partial \Omega_D \\
     \sigma(u) \cdot n &= g_T & \text{on } & \partial \Omega_T
-\end{align}
-
+\end{aligned}
 $$
 
 where : 
@@ -48,46 +44,37 @@ where :
 The variational formulation of the linear elasticity equations involves forming the inner product of the PDE with a vector test function $ v \in V $ and integrating over the domain $ \Omega $. This yields:
 
 $$
-
 \int_{\Omega} - \nabla \cdot \sigma(u) \cdot v \, \mathrm{d} x = \int_{\Omega} f \cdot v \, \mathrm{d} x
-
 $$
 
 Integrating the term $ \nabla \cdot \sigma(u) \cdot v $ by parts, considering boundary conditions, we obtain:
 
 $$
-
 \int_{\Omega} \sigma(u) : \nabla v \, \mathrm{d} x = \int_{\Omega} f \cdot v \, \mathrm{d} x + \int_{\partial \Omega_T} g_T \cdot v \, \mathrm{d} s
-
 $$
 
 By using the symmetry of the stress tensor $ \sigma $ and its definition from $(2)$, we can notice that :
 
 $$
-
 \begin{aligned}
 \int_{\Omega} \sigma(u) : \nabla v \, \mathrm{d} x &= \int_{\Omega} \sigma(u) : \epsilon(v) \, \mathrm{d} x = \int_{\Omega} C : \epsilon(u) : \epsilon(v) \, \mathrm{d} x \\ &= \int_{\Omega} \epsilon(u) : C : \epsilon(v) \, \mathrm{d} x
 \end{aligned}
-
 $$
 
 This leads to the following variational formulation:
 
 $$
-
 \boxed{
 \begin{aligned}
 &\text{Find } u \in V \text{ such that:} \\
 &\qquad a(u, v) = L(v) \quad \forall v \in V
 \end{aligned}
 }
-
 $$
 
 with
 
 $$
-
 \begin{aligned}
 &a : 
 \begin{cases}
@@ -100,16 +87,13 @@ V \rightarrow \mathbb{R} \\
 v \longmapsto \int_{\Omega} f \cdot v \, \mathrm{d} x + \int_{\partial \Omega_T} g_T \cdot v \, \mathrm{d} s
 \end{cases}
 \end{aligned}
-
 $$
 
 ## Isotropic Materials
 For isotropic materials, the elasticity tensor $C$ can be expressed in terms of the Lamé parameters $\lambda$ and $\mu$ as follows:
 
 $$
-
 C := \lambda (\nabla \cdot u) I_3 + 2\mu \epsilon(u)
-
 $$
 Then, the stress tensor can be expressed as:
 $$\sigma(u) = \lambda (\nabla \cdot u) I_3 + 2\mu \epsilon(u)$$
@@ -117,7 +101,6 @@ $$\sigma(u) = \lambda (\nabla \cdot u) I_3 + 2\mu \epsilon(u)$$
 
 This leads to the variational formulation:
 $$
-
 \boxed{
 \begin{aligned}
 &\text{Find } u \in V \text{ such that:}
@@ -125,12 +108,10 @@ $$
 &\qquad a(u, v) = L(v) \quad \forall v \in V
 \end{aligned}
 }
-
 $$
 
 with
 $$
-
 \begin{aligned}
 &a :\begin{cases}
 V \times V \rightarrow \mathbb{R} \\
@@ -141,7 +122,6 @@ V \rightarrow \mathbb{R} \\
 v \longmapsto \int_{\Omega} f \cdot v \, \mathrm{d} x + \int_{\partial \Omega_T} g_T \cdot v \, \mathrm{d} s
 \end{cases}
 \end{aligned}
-
 $$
 
 With this formulation, the problem is well-posed under the assumption that the material is isotropic and the boundary conditions are properly defined. While $\frac{\lambda}{\mu}$ is not too large (typically $\frac{\lambda}{\mu} \leq 10^4$), the problem remains well-posed numerically. However, as $\frac{\lambda}{\mu}$ increases, the problem can become ill-posed, leading to numerical difficulties in finding a solution. The first notebook of this chapter illustrates the case of isotropic materials with $\frac{\lambda}{\mu} \leq 10^4$ and the second notebook is trying to illustrate the case of isotropic materials with $\frac{\lambda}{\mu} > 10^4$.
