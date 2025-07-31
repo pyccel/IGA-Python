@@ -41,19 +41,19 @@ where :
 - $\partial \Omega_D$ is the Dirichlet boundary condition where the displacement is fixed to zero, and $\partial \Omega_T$ is the Neumann boundary condition where the traction is prescribed.
 
 ## The Variational Formulation
-The variational formulation of the linear elasticity equations involves forming the inner product of the PDE with a vector test function $ v \in V $ and integrating over the domain $ \Omega $. This yields:
+The variational formulation of the linear elasticity equations involves forming the inner product of the PDE with a vector test function $v \in V$ and integrating over the domain $\Omega$. This yields:
 
 $$
 \int_{\Omega} - \nabla \cdot \sigma(u) \cdot v \, \mathrm{d} x = \int_{\Omega} f \cdot v \, \mathrm{d} x
 $$
 
-Integrating the term $ \nabla \cdot \sigma(u) \cdot v $ by parts, considering boundary conditions, we obtain:
+Integrating the term $\nabla \cdot \sigma(u) \cdot v$ by parts, considering boundary conditions, we obtain:
 
 $$
 \int_{\Omega} \sigma(u) : \nabla v \, \mathrm{d} x = \int_{\Omega} f \cdot v \, \mathrm{d} x + \int_{\partial \Omega_T} g_T \cdot v \, \mathrm{d} s
 $$
 
-By using the symmetry of the stress tensor $ \sigma $ and its definition from $(2)$, we can notice that :
+By using the symmetry of the stress tensor $\sigma$ and its definition from $(2)$, we can notice that :
 
 $$
 \begin{aligned}
@@ -100,6 +100,7 @@ $$\sigma(u) = \lambda (\nabla \cdot u) I_3 + 2\mu \epsilon(u)$$
 
 
 This leads to the variational formulation:
+
 $$
 \boxed{
 \begin{aligned}
@@ -111,6 +112,7 @@ $$
 $$
 
 with
+
 $$
 \begin{aligned}
 &a :\begin{cases}
