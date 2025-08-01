@@ -80,7 +80,7 @@ $$
 \begin{cases}
 V \times V \rightarrow \mathbb{R} \\
 (u, v) \longmapsto \int_{\Omega} \epsilon(u) : C : \epsilon(v) \, \mathrm{d} x
-\end{cases} \\[0.3cm]
+\end{cases} \\
 &L : 
 \begin{cases}
 V \rightarrow \mathbb{R} \\
@@ -118,7 +118,7 @@ $$
 &a :\begin{cases}
 V \times V \rightarrow \mathbb{R} \\
 (u, v) \longmapsto \int_{\Omega} \sigma(u) : \epsilon(v) \, \mathrm{d} x
-\end{cases} \\[0.3cm]
+\end{cases} \\
 &L :\begin{cases}
 V \rightarrow \mathbb{R} \\
 v \longmapsto \int_{\Omega} f \cdot v \, \mathrm{d} x + \int_{\partial \Omega_T} g_T \cdot v \, \mathrm{d} s
